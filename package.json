@@ -1,0 +1,29 @@
+{
+  "name": "garbanzo",
+  "version": "1.0.0",
+  "description": "Recipes and shopping list app",
+  "main": "index.js",
+  "dependencies": {
+    "atrus": "^0.3.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "mongoose": "^5.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "babel index.js -d dist",
+    "dev": "babel-node .",
+    "start": "node dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dlemper/garbanzo.git"
+  },
+  "author": "Daniel Lemper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlemper/garbanzo/issues"
+  },
+  "homepage": "https://github.com/dlemper/garbanzo#readme"
+}
