@@ -8,3 +8,5 @@ app.use(app.middlewares.bodyParser());
 app.use(app.middlewares.staticFiles('client'));
 
 app.addRoute({ route: '/', module: 'src' });
+
+app.listen(3000, () => console.log('garbanzo listening on port 3000!'));

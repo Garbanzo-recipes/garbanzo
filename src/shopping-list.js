@@ -1,3 +1,3 @@
-exports default function (route) {
+module.exports = function (route) {
   
 };

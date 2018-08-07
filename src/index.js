@@ -1,4 +1,4 @@
-exports default function (route) {
+module.exports = function (route) {
   route.addRoute('recipes');
   route.addRoute('shopping-list');
 };
