@@ -23,4 +23,7 @@ Every time a feature is implemented, this file shall be updated accordingly.
     - [ ] OCR import of recipes
     - [ ] Import recipes from other sources (maybe by utilizing the Android sharing feature)
 - [ ] Shopping list (contains materials from recipes you want to cook)
-- [ ] Calendar (appoint meals you want to cook to days in a week for example)
+- [ ] Cooking Events
+    - [ ] Create events: Assemble the recipes, snacks, beverages etc. for the event (e.g. for a BBQ - marinade, salads, bread...)
+    - [ ] Calendar (appoint meals you want to cook to days in a week for example, invite friends)
+    - [ ] Assign different recipes and/or parts of the shopping list to different people
