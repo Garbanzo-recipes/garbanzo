@@ -18,3 +18,33 @@ There are many recipe apps out there. But they do all have their drawbacks - som
 ## Features
 
 For the feature list, please have a look at [FEATURES.md](FEATURES.md) in this repo.
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Run your end-to-end tests
+```
+npm run test:e2e
+```
