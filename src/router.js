@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import Recipes from './views/Recipes.vue';
+import Recipe from './views/Recipe.vue';
+import RecipeEdit from './views/RecipeEdit.vue';
+import ShoppingList from './views/ShoppingList.vue';
 
 Vue.use(Router);
 
@@ -12,6 +16,26 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/recipes',
+      name: 'recipes',
+      component: Recipes,
+    },
+    {
+      path: '/recipe',
+      name: 'recipe',
+      component: Recipe,
+    },
+    {
+      path: '/recipe/edit',
+      name: 'recipe-edit',
+      component: RecipeEdit,
+    },
+    {
+      path: '/shopping-list',
+      name: 'shopping-list',
+      component: ShoppingList,
     },
     {
       path: '/about',
