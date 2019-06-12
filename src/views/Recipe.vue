@@ -11,7 +11,7 @@
         {{ ingredient.quantity * peopleCount }}{{ ingredient.unit }} {{ ingredient.name }}
       </li>
     </ul>
-    <button class="button is-primary">Auf die Liste!</button>
+    <button class="button is-primary" @click="putItemsOnShoppingList()">Auf die Liste!</button>
     <h2 class="subtitle is-4">Zubereitung</h2>
     <p>{{ preparation }}</p>
     <button class="button is-primary">Will ich kochen!</button>
@@ -34,6 +34,16 @@ export default {
       preparation: 'lorem ipsum dolor sit amit',
       peopleCount: 1,
     };
+  },
+  methods: {
+    putItemsOnShoppingList() {
+      this.$store.commit('addToShoppingList', this.ingredients.map(n => Object.assign({
+          name: n.name,
+          unit: n.unit,
+          quantity: n.quantity * this.peopleCount,
+          from: this.title,
+        })));
+    },
   },
 };
 </script>
