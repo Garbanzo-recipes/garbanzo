@@ -1,19 +1,19 @@
 <template>
   <div class="content">
     <h1 class="title is-spaced">
-      <input type="text" v-model="title" class="title is-spaced">
+      <input type="text" v-model="recipe.title" class="title is-spaced">
     </h1>
     <h2 class="subtitle is-4">Zutaten</h2>
-    <p>Personen: <input type="number" min="1" max="99" step="1" v-model="peopleCount"></p>
+    <p>Personen: <input type="number" min="1" max="99" step="1" v-model="recipe.peopleCount"></p>
     <ul>
-      <li v-for="ingredient in ingredients" :key="ingredients.indexOf(ingredient)">
-        {{ ingredient.quantity * peopleCount }}{{ ingredient.unit }} {{ ingredient.name }}
+      <li v-for="ingredient in recipe.ingredients" :key="recipe.ingredients.indexOf(ingredient)">
+        {{ ingredient.quantity * recipe.peopleCount }}{{ ingredient.unit }} {{ ingredient.name }}
       </li>
     </ul>
-    <button class="button is-primary">Auf die Liste!</button>
     <h2 class="subtitle is-4">Zubereitung</h2>
-    <p>{{ preparation }}</p>
-    <button class="button is-primary">Will ich kochen!</button>
+    <textarea v-model="recipe.preparation"></textarea>
+    <br><br>
+    <button class="button is-primary" @click="save()">Speichern</button>
   </div>
 </template>
 
@@ -22,17 +22,22 @@ export default {
   name: 'recipe',
   data() {
     return {
-      title: 'low knead pizza',
-      ingredients: [
-        {
-          name: 'Mehl',
-          quantity: 300,
-          unit: 'g',
-        },
-      ],
-      preparation: 'lorem ipsum dolor sit amit',
-      peopleCount: 1,
+      recipe: {},
+      originalTitle: '',
     };
+  },
+  methods: {
+    save() {
+      this.$store.commit('updateRecipe', {
+        originalTitle: this.originalTitle,
+        recipe: this.recipe,
+      });
+      this.$router.push(`/recipe/${this.recipe.title}`);
+    },
+  },
+  mounted() {
+    this.recipe = this.$store.getters.recipeByTitle(this.$route.params.title);
+    this.originalTitle = this.recipe.title;
   },
 };
 </script>

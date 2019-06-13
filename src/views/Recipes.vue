@@ -3,7 +3,7 @@
     <div class="panel">
       <div class="panel-heading">Rezepte</div>
         <router-link
-          to="/recipe"
+          :to="`/recipe/${recipe.title}`"
           class="panel-block"
           v-for="recipe in recipes"
           :key="recipes.indexOf(recipe)"
@@ -19,12 +19,12 @@ export default {
   name: 'recipes',
   data() {
     return {
-      recipes: [
-        {
-          title: 'low knead pizza',
-        },
-      ],
+      recipes: [],
     };
+  },
+  mounted() {
+    console.log('mounted');
+    this.recipes = this.$store.getters.recipeList();
   },
 };
 </script>

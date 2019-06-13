@@ -23,14 +23,14 @@ export default new Router({
       component: Recipes,
     },
     {
-      path: '/recipe',
-      name: 'recipe',
-      component: Recipe,
-    },
-    {
-      path: '/recipe/edit',
+      path: '/recipe/:title/edit',
       name: 'recipe-edit',
       component: RecipeEdit,
+    },
+    {
+      path: '/recipe/:title',
+      name: 'recipe',
+      component: Recipe,
     },
     {
       path: '/shopping-list',
