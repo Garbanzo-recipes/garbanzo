@@ -6,17 +6,17 @@
         <font-awesome-icon icon="edit" />
       </router-link>
     </h1>
-    <h2 class="subtitle is-4">Zutaten</h2>
+    <h2 class="subtitle is-4">Ingredients</h2>
     <p>Personen: <input type="number" min="1" max="99" step="1" v-model="recipe.peopleCount"></p>
     <ul>
       <li v-for="ingredient in recipe.ingredients" :key="recipe.ingredients.indexOf(ingredient)">
         {{ ingredient.quantity * recipe.peopleCount }}{{ ingredient.unit }} {{ ingredient.name }}
       </li>
     </ul>
-    <button class="button is-primary" @click="putItemsOnShoppingList()">Auf die Liste!</button>
-    <h2 class="subtitle is-4">Zubereitung</h2>
+    <button class="button is-primary" @click="putItemsOnShoppingList()">Put on list!</button>
+    <h2 class="subtitle is-4">Preparation</h2>
     <p>{{ recipe.preparation }}</p>
-    <button class="button is-primary">Will ich kochen!</button>
+    <button class="button is-primary">Cook now!</button>
   </div>
 </template>
 

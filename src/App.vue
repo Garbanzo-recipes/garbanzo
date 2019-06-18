@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="navbar">
       <div class="navbar-brand">
-        <div class="navbar-item">TheG</div>
+        <div class="navbar-item">Garbanzo</div>
         <a
           role="button"
           class="navbar-burger burger"

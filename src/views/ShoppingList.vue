@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="panel">
-      <div class="panel-heading">Einkaufsliste</div>
+      <div class="panel-heading">Shopping list</div>
       <label
         class="panel-block"
         v-for="item in $store.state.shoppingList"
@@ -9,7 +9,7 @@
       >
         <input type="checkbox" />
         {{ item.quantity }}{{ item.unit }} {{ item.name }}
-        &nbsp;<router-link :to="`/recipe/${item.from}`">Rezept</router-link>
+        &nbsp;|&nbsp;<router-link :to="`/recipe/${item.from}`">Recipe</router-link>
       </label>
     </div>
 
@@ -17,10 +17,10 @@
       Alles eingekauft
     </button>
     <Dialog
-      title="Alles eingekauft?"
-      message="Hast du wirklich alles eingekauft?"
-      ok="Ja"
-      cancel="Nein"
+      title="Everything bought?"
+      message="Did you really buy every piece?"
+      ok="Yes"
+      cancel="No"
       @ok="clearShoppingList()"
       @cancelled="toggleDialog()"
       :show="showClearDialog"

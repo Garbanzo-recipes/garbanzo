@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="panel">
-      <div class="panel-heading">Rezepte</div>
+      <div class="panel-heading">Recipes</div>
         <router-link
           :to="`/recipe/${recipe.title}`"
           class="panel-block"
