@@ -1,18 +1,27 @@
 <template>
   <div class="content">
-    <h1 class="title is-spaced">
-      <input type="text" v-model="recipe.title" class="title is-spaced">
-    </h1>
+    <input class="input is-large" type="text" v-model="recipe.title">
     <h2 class="subtitle is-4">Ingredients</h2>
-    <p>Personen: <input type="number" min="1" max="99" step="1" v-model="recipe.peopleCount"></p>
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <label class="label">People</label>
+      </div>
+      <div class="field-body">
+        <input class="input" type="number" min="1" max="99" step="1" v-model="recipe.peopleCount">
+      </div>
+    </div>
     <ul>
-      <li v-for="ingredient in recipe.ingredients" :key="recipe.ingredients.indexOf(ingredient)">
-        {{ ingredient.quantity * recipe.peopleCount }}{{ ingredient.unit }} {{ ingredient.name }}
+      <li class="field is-horizontal" v-for="ingredient in recipe.ingredients" :key="recipe.ingredients.indexOf(ingredient)">
+        <input class="input" type="number" v-model="ingredient.quantity" placeholder="Quantity">&nbsp;
+        <input class="input" type="text" v-model="ingredient.unit" placeholder="Unit">&nbsp;
+        <input class="input" type="text" v-model="ingredient.name" placeholder="Ingridient">&nbsp;
+        <button class="button is-secondary" @click="removeIngridient(ingredient)">Remove</button>
       </li>
+      <li class="field is-horizontal"><button class="button is-secondary" @click="addEmptyIngridient()">Add</button></li>
     </ul>
     <h2 class="subtitle is-4">Preparation</h2>
-    <textarea v-model="recipe.preparation"></textarea>
-    <br><br>
+    <textarea class="textarea" v-model="recipe.preparation"></textarea>
+    <br>
     <button class="button is-primary" @click="save()">Save</button>
   </div>
 </template>
@@ -27,6 +36,16 @@ export default {
     };
   },
   methods: {
+    addEmptyIngridient() {
+      this.recipe.ingredients.push({
+        quantity: null,
+        unit: null,
+        name: null,
+      });
+    },
+    removeIngridient(ingredient) {
+      this.recipe.ingredients = this.recipe.ingredients.filter(n => n !== ingredient);
+    },
     save() {
       this.$store.commit('updateRecipe', {
         originalTitle: this.originalTitle,

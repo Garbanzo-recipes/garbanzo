@@ -8,7 +8,7 @@
       <section class="modal-card-body">
         {{ message }}
       </section>
-      <footer class="modal-card-foot">
+      <footer class="modal-card-foot is-vertical-right">
         <button class="button is-success" @click="$emit('ok')">{{ ok }}</button>
         <button class="button" @click="$emit('cancelled')">{{ cancel }}</button>
       </footer>
@@ -28,3 +28,9 @@ export default {
   ],
 };
 </script>
+
+<style scoped>
+.is-vertical-right {
+  justify-content: flex-end;
+}
+</style>
