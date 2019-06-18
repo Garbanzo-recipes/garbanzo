@@ -54,6 +54,9 @@ export default new Vuex.Store({
     clearShoppingList(state) {
       state.shoppingList = []; // eslint-disable-line
     },
+    addRecipe(state, payload) {
+      state.recipes.push(payload);
+    },
     updateRecipe(state, payload) {
       const index = state.recipes.findIndex(recipe => recipe.title === payload.originalTitle);
       state.recipes[index] = deepCopy(payload.recipe); // eslint-disable-line
