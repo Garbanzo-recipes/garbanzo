@@ -10,7 +10,7 @@ import About from './views/About.vue';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history', // not compatible with gh-pages
   base: process.env.BASE_URL,
   routes: [
     {
