@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :class="{ 'is-active': show}">
+  <div class="modal is-active" v-if="show">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -9,8 +9,8 @@
         {{ message }}
       </section>
       <footer class="modal-card-foot is-vertical-right">
-        <button class="button is-success" @click="$emit('ok')">{{ ok }}</button>
         <button class="button" @click="$emit('cancelled')">{{ cancel }}</button>
+        <button class="button is-success" @click="$emit('ok')">{{ ok }}</button>
       </footer>
     </div>
   </div>

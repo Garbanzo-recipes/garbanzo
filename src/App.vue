@@ -33,7 +33,7 @@
         </div>
       </transition>
     </nav>
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <router-view class="margin-top-10" />
     </transition>
   </div>
