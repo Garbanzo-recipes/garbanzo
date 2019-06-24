@@ -25,7 +25,7 @@ export default new Router({
     },
     {
       path: '/recipe/new',
-      name: 'recipe-edit',
+      name: 'recipe-new',
       component: RecipeEdit,
     },
     {
@@ -53,4 +53,5 @@ export default new Router({
       component: About,
     },
   ],
+  linkExactActiveClass: 'is-active',
 });

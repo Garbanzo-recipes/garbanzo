@@ -45,8 +45,10 @@ export default new Vuex.Store({
     recipeList: state => () => state.recipes.map(recipe => ({
       title: recipe.title,
       cookTimeInMinutes: recipe.cookTimeInMinutes,
+      ingredientsCount: recipe.ingredients.length,
     })),
     recipeByTitle: state => title => deepCopy(state.recipes.find(recipe => recipe.title === title)),
+    shoppingList: state => deepCopy(state.shoppingList),
   },
   mutations: {
     addToShoppingList(state, payload) {
@@ -61,7 +63,12 @@ export default new Vuex.Store({
     updateRecipe(state, payload) {
       const index = state.recipes.findIndex(recipe => recipe.title === payload.originalTitle);
       state.recipes[index] = deepCopy(payload.recipe); // eslint-disable-line
-      console.log('store', state.recipes);
+    },
+    updateShoppingList(state, payload) {
+      state.shoppingList = deepCopy(payload); // eslint-disable-line
+    },
+    removeRecipe(state, payload) {
+      state.recipes = state.recipes.filter(recipe => recipe.title !== payload.title); // eslint-disable-line
     },
   },
   actions: {

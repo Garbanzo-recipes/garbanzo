@@ -31,13 +31,16 @@
     <h2 class="subtitle is-4">Preparation</h2>
     <textarea class="textarea" v-model="recipe.preparation" placeholder="Preparation"></textarea>
     <br>
-    <button class="button is-primary" @click="save()">Save</button>
+    <div class="buttons">
+      <button class="button" @click="$router.back()">Cancel</button>
+      <button class="button is-primary" @click="save()">Save</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'recipe',
+  name: 'recipe-edit',
   data() {
     return {
       recipe: {

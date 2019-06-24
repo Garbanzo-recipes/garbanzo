@@ -3,32 +3,64 @@
     <div class="panel">
       <div class="panel-heading is-flex is-space-between-justified">
         <p class="is-marginless">Recipes</p>
-        <button class="button is-secondary is-small" @click="$router.push('/recipe/new')">
-          New recipe
+        <button class="button is-small" @click="$router.push('/recipe/new')">
+          <font-awesome-icon icon="plus" />
         </button>
       </div>
-      <router-link
-        :to="`/recipe/${recipe.title}`"
-        class="panel-block"
+      <div
+        class="panel-block is-flex has-space-between-items"
         v-for="recipe in recipes"
         :key="recipes.indexOf(recipe)"
       >
-        {{ recipe.title }}
-      </router-link>
+        <router-link :to="`/recipe/${recipe.title}`">{{ recipe.title }}</router-link>
+        <button class="button is-small" @click="toggleRemoveRecipeDialog(recipe)">
+          <font-awesome-icon icon="minus" />
+        </button>
+      </div>
     </div>
+
+    <dialog-modal
+      :title="`Delete ${recipeToDelete.title}?`"
+      :message="`Do you really want to delete ${recipeToDelete.title}?`"
+      ok="Yes"
+      cancel="No"
+      @ok="removeRecipe(recipeToDelete)"
+      @cancelled="toggleRemoveRecipeDialog()"
+      :show="showRemoveRecipeDialog"
+    />
   </div>
 </template>
 
 <script>
+import DialogModal from '@/components/Dialog.vue';
+
 export default {
   name: 'recipes',
+  components: {
+    DialogModal,
+  },
   data() {
     return {
       recipes: [],
+      recipeToDelete: {},
+      showRemoveRecipeDialog: false,
     };
   },
+  methods: {
+    toggleRemoveRecipeDialog(recipe) {
+      this.showRemoveRecipeDialog = !this.showRemoveRecipeDialog;
+      if (recipe) {
+        this.recipeToDelete = recipe;
+      }
+      this.$forceUpdate();
+    },
+    removeRecipe(recipe) {
+      this.toggleRemoveRecipeDialog();
+      this.$store.commit('removeRecipe', recipe);
+      this.recipes = this.$store.getters.recipeList();
+    },
+  },
   mounted() {
-    console.log('mounted');
     this.recipes = this.$store.getters.recipeList();
   },
 };
@@ -41,5 +73,8 @@ export default {
 
 .is-aligned-center {
   align-self: center;
+}
+.has-space-between-items {
+  justify-content: space-between;
 }
 </style>

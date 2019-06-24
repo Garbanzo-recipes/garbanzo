@@ -1,55 +1,112 @@
 <template>
   <div class="content">
     <div class="panel">
-      <div class="panel-heading">Shopping list</div>
+      <div class="panel-heading is-flex has-space-between-items">
+        Shopping list
+        <div class="buttons">
+          <button
+            class="button is-small"
+            :class="{ 'is-primary': items.some(item => item.checked) }"
+            @click="removeSelectedItemd()/*toggleClearSelectedDialog()*/"
+            :disabled="!items.some(item => item.checked)"
+          >
+            <font-awesome-icon icon="check" />
+          </button>
+          <button
+            class="button is-small"
+            :class="{ 'is-primary': items.every(item => !item.checked) }"
+            @click="toggleClearAllDialog()"
+            :disabled="items.length === 0"
+          >
+            <font-awesome-icon icon="check-double" />
+          </button>
+        </div>
+      </div>
       <label
         class="panel-block"
-        v-for="item in $store.state.shoppingList"
-        :key="$store.state.shoppingList.indexOf(item)"
+        v-for="item in items"
+        :key="items.indexOf(item)"
       >
-        <input type="checkbox" />
+        <input type="checkbox" v-model="item.checked" />
         {{ item.quantity }}{{ item.unit }} {{ item.name }}
         &nbsp;|&nbsp;<router-link :to="`/recipe/${item.from}`">Recipe</router-link>
       </label>
     </div>
-
-    <button class="button is-primary" @click="toggleDialog()">
-      Alles eingekauft
-    </button>
-    <Dialog
+    <dialog-modal
       title="Everything bought?"
       message="Did you really buy every piece?"
       ok="Yes"
       cancel="No"
       @ok="clearShoppingList()"
-      @cancelled="toggleDialog()"
-      :show="showClearDialog"
+      @cancelled="toggleClearAllDialog()"
+      :show="showClearAllDialog"
     />
+    <!--<dialog-modal
+      title="Bought selected items?"
+      message="Did you really buy the selected items?"
+      ok="Yes"
+      cancel="No"
+      @ok="removeSelectedItemd()"
+      @cancelled="toggleClearSelectedDialog()"
+      :show="showClearSelectedDialog"
+    />-->
   </div>
 </template>
 
 <script>
-import Dialog from '@/components/Dialog.vue';
+import DialogModal from '@/components/Dialog.vue';
 
 export default {
   name: 'shopping-list',
   components: {
-    Dialog,
+    DialogModal,
   },
   data() {
     return {
-      showClearDialog: false,
+      showClearAllDialog: false,
+      showClearSelectedDialog: false,
+      items: [],
     };
   },
   methods: {
-    toggleDialog() {
-      this.showClearDialog = !this.showClearDialog;
+    toggleClearAllDialog() {
+      this.showClearAllDialog = !this.showClearAllDialog;
       this.$forceUpdate();
     },
     clearShoppingList() {
-      this.toggleDialog();
+      this.toggleClearAllDialog();
       this.$store.commit('clearShoppingList');
+      this.items = this.$store.getters.shoppingList;
     },
+    toggleClearSelectedDialog() {
+      this.showClearSelectedDialog = !this.showClearSelectedDialog;
+      this.$forceUpdate();
+    },
+    removeSelectedItemd() {
+      this.toggleClearSelectedDialog();
+
+      const updatedList = this.items
+        .filter(item => !item.checked)
+        .map((item) => {
+          const newItem = item;
+          delete newItem.checked;
+          return newItem;
+        });
+      this.$store.commit('updateShoppingList', updatedList);
+      this.items = this.$store.getters.shoppingList;
+    },
+  },
+  mounted() {
+    this.items = this.$store.getters.shoppingList;
   },
 };
 </script>
+
+<style scoped>
+.is-justified-left {
+  justify-content: flex-start;
+}
+.has-space-between-items {
+  justify-content: space-between;
+}
+</style>

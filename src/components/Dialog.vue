@@ -1,7 +1,7 @@
 <template>
   <div class="modal is-active" v-if="show">
     <div class="modal-background"></div>
-    <div class="modal-card">
+    <div class="modal-card pad-sides">
       <header class="modal-card-head">
         <p class="modal-card-title">{{ title }}</p>
       </header>
@@ -18,19 +18,24 @@
 
 <script>
 export default {
-  name: 'dialog',
-  props: [
-    'title',
-    'message',
-    'ok',
-    'cancel',
-    'show',
-  ],
+  name: 'dialog-modal',
+  props: {
+    title: String,
+    message: String,
+    ok: String,
+    cancel: String,
+    show: Boolean,
+  },
 };
 </script>
 
 <style scoped>
 .is-vertical-right {
   justify-content: flex-end;
+}
+
+.pad-sides {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 </style>
