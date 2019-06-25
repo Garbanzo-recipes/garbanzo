@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import DialogModal from '@/components/Dialog.vue';
+import DialogModal from '@/components/DialogModal.vue';
 
 export default {
   name: 'shopping-list',

@@ -7,6 +7,8 @@ import {
   faPlus,
   faMinus,
   faPen,
+  faDownload,
+  faShare,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
@@ -21,6 +23,8 @@ import './registerServiceWorker';
   faPlus,
   faMinus,
   faPen,
+  faDownload,
+  faShare,
 ].forEach(item => library.add(item));
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

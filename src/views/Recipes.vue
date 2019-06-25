@@ -3,9 +3,14 @@
     <div class="panel">
       <div class="panel-heading is-flex is-space-between-justified">
         <p class="is-marginless">Recipes</p>
-        <button class="button is-small" @click="$router.push('/recipe/new')">
-          <font-awesome-icon icon="plus" />
-        </button>
+        <div class="buttons">
+          <button class="button is-small" @click="downloadRecipes()">
+            <font-awesome-icon icon="download" />
+          </button>
+          <button class="button is-small" @click="$router.push('/recipe/new')">
+            <font-awesome-icon icon="plus" />
+          </button>
+        </div>
       </div>
       <div
         class="panel-block is-flex has-space-between-items"
@@ -32,7 +37,7 @@
 </template>
 
 <script>
-import DialogModal from '@/components/Dialog.vue';
+import DialogModal from '@/components/DialogModal.vue';
 
 export default {
   name: 'recipes',
@@ -58,6 +63,17 @@ export default {
       this.toggleRemoveRecipeDialog();
       this.$store.commit('removeRecipe', recipe);
       this.recipes = this.$store.getters.recipeList();
+    },
+    downloadRecipes() {
+      this.downloadDataAsFile('Recipes.json', JSON.stringify(this.$store.state.recipes));
+    },
+    downloadDataAsFile(filename, data) { // from https://codepen.io/nigamshirish/pen/ZMpvRa
+      const url = window.URL.createObjectURL(new Blob([data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', filename);
+      document.body.appendChild(link);
+      link.click();
     },
   },
   mounted() {

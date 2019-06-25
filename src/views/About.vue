@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1 class="title is-size-3">About Garbanzo</h1>
+    <h1 class="title">About Garbanzo</h1>
     <p>
       Garbanzo aims to be a personal cookbook app that makes it easy to follow
       recipes, to adopt them, to store them for later use and to share them

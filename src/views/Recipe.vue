@@ -8,6 +8,9 @@
       <button class="button" @click="$router.push(`/recipe/${recipe.title}/edit`)">
         <font-awesome-icon icon="pen" />
       </button>
+      <button class="button" @click="">
+        <font-awesome-icon icon="share" />
+      </button>
     </h1>
     <h2 class="subtitle is-4">Ingredients</h2>
     <div class="field is-horizontal">
@@ -31,6 +34,17 @@
     <h2 class="subtitle is-4">Preparation</h2>
     <p>{{ recipe.preparation }}</p>
     <button class="button is-primary">Cook now!</button>
+
+    <dialog-modal
+      title=""
+      ok=""
+      cancel="No"
+      @ok="clearShoppingList()"
+      @cancelled="toggleClearAllDialog()"
+      :show="showClearAllDialog"
+    >
+      Did you really buy every piece?
+    </dialog-modal>
   </div>
 </template>
 
