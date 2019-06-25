@@ -1,5 +1,5 @@
 <template>
-  <div class="modal is-active" v-show="show">
+  <div class="modal is-active" v-if="show">
     <div class="modal-background"></div>
     <div class="modal-card" ref="card">
       <header class="modal-card-head">
