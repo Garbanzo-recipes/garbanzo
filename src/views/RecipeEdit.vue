@@ -2,33 +2,50 @@
   <div class="content">
     <input class="input is-large" type="text" v-model="recipe.title" placeholder="Title">
     <h2 class="subtitle is-4">Ingredients</h2>
-    <div class="field is-horizontal">
-      <div class="field-label">
-        <label class="label">People</label>
-      </div>
-      <div class="field-body">
+    <div class="field has-addons">
+      <p class="control has-icons-left">
         <input class="input" type="number" min="1" max="99" step="1" v-model="recipe.peopleCount">
-      </div>
+        <span class="icon is-small is-left">
+          <font-awesome-icon icon="user-friends" />
+        </span>
+      </p>
     </div>
     <ul>
       <li
-        class="field is-horizontal"
+        class="field has-addons"
         v-for="ingredient in recipe.ingredients"
         :key="recipe.ingredients.indexOf(ingredient)"
       >
-        <input class="input" type="number" v-model="ingredient.quantity" placeholder="Quantity">
-        &nbsp;
-        <input class="input" type="text" v-model="ingredient.unit" placeholder="Unit">
-        &nbsp;
-        <input class="input" type="text" v-model="ingredient.name" placeholder="Ingridient">
-        &nbsp;
-        <button class="button is-secondary" @click="removeIngridient(ingredient)">Remove</button>
+        <p class="control">
+          <input class="input" type="number" v-model="ingredient.quantity" placeholder="Quantity">
+        </p>
+        <p class="control">
+          <input class="input" type="text" v-model="ingredient.unit" placeholder="Unit">
+        </p>
+        <p class="control">
+          <input class="input" type="text" v-model="ingredient.name" placeholder="Ingridient">
+        </p>
+        <p class="control">
+          <button class="button is-secondary" @click="removeIngridient(ingredient)">
+            <font-awesome-icon icon="minus" />
+          </button>
+        </p>
       </li>
       <li class="field is-horizontal">
-        <button class="button is-secondary" @click="addEmptyIngridient()">Add</button>
+        <button class="button is-secondary" @click="addEmptyIngridient()">
+          <font-awesome-icon icon="plus" />
+        </button>
       </li>
     </ul>
     <h2 class="subtitle is-4">Preparation</h2>
+    <div class="field has-addons">
+      <p class="control has-icons-left">
+        <input class="input" type="text" v-model="recipe.cookTimeInMinutes" placeholder="Minutes" />
+        <span class="icon is-small is-left">
+          <font-awesome-icon icon="clock" />
+        </span>
+      </p>
+    </div>
     <textarea class="textarea" v-model="recipe.preparation" placeholder="Preparation"></textarea>
     <br>
     <div class="buttons">

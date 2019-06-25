@@ -8,9 +8,16 @@ import {
   faMinus,
   faPen,
   faDownload,
+  faUpload,
   faShare,
+  faClock,
+  faShoppingCart,
+  faUserFriends,
+  faQrcode,
+  faAngleDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import VueQriously from 'vue-qriously';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -24,10 +31,17 @@ import './registerServiceWorker';
   faMinus,
   faPen,
   faDownload,
+  faUpload,
   faShare,
+  faClock,
+  faShoppingCart,
+  faUserFriends,
+  faQrcode,
+  faAngleDown,
 ].forEach(item => library.add(item));
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(VueQriously);
 
 Vue.config.productionTip = false;
 
