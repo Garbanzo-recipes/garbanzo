@@ -68,6 +68,7 @@
     <scan-qr-code-dialog
       :show="showQrCodeScannerDialog"
       @scanResult="importRecipeFromQrCode"
+      @close="toggleQrCodeScannerDialog"
     />
   </div>
 </template>
