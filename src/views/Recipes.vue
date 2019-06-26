@@ -124,6 +124,7 @@ export default {
       this.showQrCodeScannerDialog = !this.showQrCodeScannerDialog;
     },
     importRecipeFromQrCode(content) {
+      this.toggleQrCodeScannerDialog();
       this.$store.commit('addRecipe', JSON.parse(content));
       this.recipes = this.$store.getters.recipeList();
     },
