@@ -6,7 +6,7 @@
         <div class="buttons">
           <div class="dropdown is-right" :class="{ 'is-active': showShareMenu }">
             <div class="dropdown-trigger">
-              <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu" @click="showShareMenu = !showShareMenu">
+              <button class="button is-small" @click="showShareMenu = !showShareMenu">
                 <span><font-awesome-icon icon="share" /></span>
                 <span class="icon is-small">
                   <font-awesome-icon icon="angle-down" />
@@ -75,7 +75,7 @@
 
 <script>
 import DialogModal from '@/components/DialogModal.vue';
-import ScanQrCodeDialog from '@/components/ScanQrCodeDialog';
+import ScanQrCodeDialog from '@/components/ScanQrCodeDialog.vue';
 
 export default {
   name: 'recipes',
@@ -126,7 +126,7 @@ export default {
     importRecipeFromQrCode(content) {
       this.$store.commit('addRecipe', JSON.parse(content));
       this.recipes = this.$store.getters.recipeList();
-    }
+    },
   },
   mounted() {
     this.recipes = this.$store.getters.recipeList();

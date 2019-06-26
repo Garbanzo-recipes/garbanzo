@@ -34,7 +34,7 @@ export default new Vuex.Store({
             unit: 'cups',
           },
         ],
-        preparation: 'Whisk dry ingredients together, then pour in milk. Here’s the low knead part: mix together and then fold over once or twice (yes, it is very sticky) until it combines to form a nice lump. Cover with plastic wrap (if it is not clingy enough, weight down with a dish towel) and allow to rise about 24 hours. Scrape the dough out onto a lightly floured board and fold dough onto itself a few times. Cover again and allow to rise for 1-2 hours. Divide dough in two on a lightly floured board and roll, press, pull and/or toss into disks. Put a generous layer of cornmeal or flour on your pizza pan or peel before transferring the dough. Top as desired and bake at 450 for 15 to 20 minutes, or until the crust has browned nicely.',
+        preparation: "Whisk dry ingredients together, then pour in milk. Here's the low knead part: mix together and then fold over once or twice (yes, it is very sticky) until it combines to form a nice lump. Cover with plastic wrap (if it is not clingy enough, weight down with a dish towel) and allow to rise about 24 hours. Scrape the dough out onto a lightly floured board and fold dough onto itself a few times. Cover again and allow to rise for 1-2 hours. Divide dough in two on a lightly floured board and roll, press, pull and/or toss into disks. Put a generous layer of cornmeal or flour on your pizza pan or peel before transferring the dough. Top as desired and bake at 450 for 15 to 20 minutes, or until the crust has browned nicely.",
         peopleCount: 1,
         cookTimeInMinutes: 30,
         link: 'https://www.evilmadscientist.com/2007/low-knead-pizza/',
