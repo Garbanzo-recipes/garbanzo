@@ -43,7 +43,7 @@ export default {
         this.chunks[chunkIndex] = data.slice(matches[0].length);
 
         if (this.chunks.length === chunksCount && this.chunks.every(chunk => chunk !== undefined)) {
-          this.$emit('scanResult', this.chunks.join().trim());
+          this.$emit('scanResult', this.chunks.join('').trim());
         }
       } else {
         this.$emit('scanResult', data);
