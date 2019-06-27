@@ -70,10 +70,10 @@ export default {
         const testInput = document.createElement('input');
         testInput.type = 'week';
         return testInput.type !== 'text';
-      }
+      };
 
       const isIOS = () => window.navigator.userAgent.match(/(iPod|iPhone|iPad)/);
-      
+
       return hasWeekType() && !isIOS();
     },
   },
