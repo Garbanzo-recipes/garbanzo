@@ -1,16 +1,29 @@
+<i18n>
+{
+  "en": {
+    "title": "Scan QR Code",
+    "cancel": "Cancel"
+  },
+  "de": {
+    "title": "QR Code scannen",
+    "cancel": "Abbrechen"
+  }
+}
+</i18n>
+
 <template>
   <div class="modal is-active" v-if="show">
     <div class="modal-background"></div>
     <div class="modal-card" ref="card">
       <header class="modal-card-head">
-        <span class="modal-card-title">Scan QR Code</span>
+        <span class="modal-card-title">{{ $t('title') }}</span>
         <button class="delete" aria-label="close" @click="$emit('close')"></button>
       </header>
       <section class="modal-card-body is-flex is-justified-center">
         <qrcode-stream @decode="onDecode($event)"></qrcode-stream>
       </section>
       <footer class="modal-card-foot is-flex is-justified-center">
-        <button class="button" @click="$emit('close')">Cancel</button>
+        <button class="button" @click="$emit('close')">{{ $t('cancel') }}</button>
       </footer>
     </div>
   </div>

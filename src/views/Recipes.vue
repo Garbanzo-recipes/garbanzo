@@ -1,8 +1,37 @@
+<i18n>
+{
+  "en": {
+    "title": "Recipes",
+    "scan": "Scan QR Code",
+    "download": "Download",
+    "upload": "Upload",
+    "deleteDialog": {
+      "title": "Delete '{title}'?",
+      "message": "Do you really want to delete '{title}'?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "de": {
+    "title": "Rezepte",
+    "scan": "QR Code scannen",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "deleteDialog": {
+      "title": "'{title}' löschen?",
+      "message": "Willst du '{title}' wirklich löschen?",
+      "yes": "Ja",
+      "no": "Nein"
+    }
+  }
+}
+</i18n>
+
 <template>
   <div class="content">
     <div class="panel">
       <div class="panel-heading is-flex is-space-between-justified">
-        <p class="is-marginless">Recipes</p>
+        <p class="is-marginless">{{ $t('title') }}</p>
         <div class="buttons">
           <div class="dropdown is-right" :class="{ 'is-active': showShareMenu }">
             <div class="dropdown-trigger">
@@ -16,14 +45,14 @@
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
                 <a @click="toggleQrCodeScannerDialog()" class="dropdown-item">
-                  <font-awesome-icon icon="qrcode" /> Scan QR Code
+                  <font-awesome-icon icon="qrcode" /> {{ $t('scan') }}
                 </a>
                 <hr class="dropdown-divider">
                 <a @click="downloadRecipes()" class="dropdown-item">
-                  <font-awesome-icon icon="download" /> Download
+                  <font-awesome-icon icon="download" /> {{ $t('download') }}
                 </a>
                 <a @click="uploadRecipes()" class="dropdown-item">
-                  <font-awesome-icon icon="upload" /> Upload
+                  <font-awesome-icon icon="upload" /> {{ $t('upload') }}
                 </a>
               </div>
             </div>
@@ -56,10 +85,10 @@
     </div>
 
     <dialog-modal
-      :title="`Delete ${recipeToDelete.title}?`"
-      :message="`Do you really want to delete ${recipeToDelete.title}?`"
-      ok="Yes"
-      cancel="No"
+      :title="$t('deleteDialog.title', { title: recipeToDelete.title })"
+      :message="$t('deleteDialog.message', { title: recipeToDelete.title })"
+      :ok="$t('deleteDialog.yes')"
+      :cancel="$t('deleteDialog.no')"
       @ok="removeRecipe(recipeToDelete)"
       @cancelled="toggleRemoveRecipeDialog()"
       :show="showRemoveRecipeDialog"

@@ -1,8 +1,33 @@
+<i18n>
+{
+  "en": {
+    "title": "Shopping list",
+    "recipe": "Recipe",
+    "clearAllDialog": {
+      "title": "Everything bought?",
+      "message": "Did you really buy every piece?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "de": {
+    "title": "Einkaufsliste",
+    "recipe": "Rezept",
+    "clearAllDialog": {
+      "title": "Alles eingekauft?",
+      "message": "Hast du wirklich alles eingekauft?",
+      "yes": "Ja",
+      "no": "Nein"
+    }
+  }
+}
+</i18n>
+
 <template>
   <div class="content">
     <div class="panel">
       <div class="panel-heading is-flex has-space-between-items">
-        Shopping list
+        {{ $t('title') }}
         <div class="buttons">
           <button
             class="button is-small"
@@ -29,14 +54,14 @@
       >
         <input type="checkbox" v-model="item.checked" />
         {{ item.quantity }}{{ item.unit }} {{ item.name }}
-        &nbsp;|&nbsp;<router-link :to="`/recipe/${item.from}`">Recipe</router-link>
+        &nbsp;|&nbsp;<router-link :to="`/recipe/${item.from}`">{{ $t('recipe') }}</router-link>
       </label>
     </div>
     <dialog-modal
-      title="Everything bought?"
-      message="Did you really buy every piece?"
-      ok="Yes"
-      cancel="No"
+      :title="$t('clearAllDialog.title')"
+      :message="$t('clearAllDialog.message')"
+      :ok="$t('clearAllDialog.yes')"
+      :cancel="$t('clearAllDialog.no')"
       @ok="clearShoppingList()"
       @cancelled="toggleClearAllDialog()"
       :show="showClearAllDialog"

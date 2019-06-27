@@ -1,3 +1,14 @@
+<i18n>
+{
+  "en": {
+    "week": "Week {week}"
+  },
+  "de": {
+    "week": "Woche {week}"
+  }
+}
+</i18n>
+
 <template>
   <div>
     <input
@@ -19,7 +30,7 @@
               :value="week"
               :required="required"
             >
-              Week {{ week }}
+              {{ $t('week', { week }) }}
             </option>
           </select>
         </div>

@@ -1,6 +1,17 @@
+<i18n>
+{
+  "en": {
+    "rotd": "Recipe of the day"
+  },
+  "de": {
+    "rotd": "Rezept des Tages"
+  }
+}
+</i18n>
+
 <template>
   <div class="home">
-    <h1 class="is-size-3">Recipe of the day</h1>
+    <h1 class="is-size-3">{{ $t('rotd') }}</h1>
     <recipe-card :recipe="recipeOfTheDay" />
   </div>
 </template>

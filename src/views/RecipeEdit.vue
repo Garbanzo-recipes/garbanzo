@@ -1,7 +1,39 @@
+<i18n>
+{
+  "en": {
+    "title": "Title",
+    "ingredients": "Ingredients",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "ingridient": "Ingridient",
+    "putOnList": "Put on list!",
+    "preparation": "Preparation",
+    "preparationTime": "Preparation time",
+    "minutes": "Minutes",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "de": {
+    "title": "Titel",
+    "ingredients": "Zutaten",
+    "quantity": "Menge",
+    "unit": "Einheit",
+    "ingridient": "Zutat",
+    "putOnList": "Auf die Liste!",
+    "preparation": "Zubereitung",
+    "preparationTime": "Dauer",
+    "minutes": "Minuten",
+    "cookNow": "Jetz kochen!",
+    "cancel": "Abbrechen",
+    "save": "Speichern"
+  }
+}
+</i18n>
+
 <template>
   <div class="content">
-    <input class="input is-large" type="text" v-model="recipe.title" placeholder="Title">
-    <h2 class="subtitle is-4">Ingredients</h2>
+    <input class="input is-large" type="text" v-model="recipe.title" :placeholder="$t('title')">
+    <h2 class="subtitle is-4">{{ $t('ingredients') }}</h2>
     <div class="field has-addons">
       <p class="control has-icons-left">
         <input class="input" type="number" min="1" max="99" step="1" v-model="recipe.peopleCount">
@@ -17,13 +49,23 @@
         :key="recipe.ingredients.indexOf(ingredient)"
       >
         <p class="control">
-          <input class="input" type="number" v-model="ingredient.quantity" placeholder="Quantity">
+          <input
+            class="input"
+            type="number"
+            v-model="ingredient.quantity"
+            :placeholder="$t('quantity')"
+          />
         </p>
         <p class="control">
-          <input class="input" type="text" v-model="ingredient.unit" placeholder="Unit">
+          <input class="input" type="text" v-model="ingredient.unit" :placeholder="$t('unit')">
         </p>
         <p class="control">
-          <input class="input" type="text" v-model="ingredient.name" placeholder="Ingridient">
+          <input
+            class="input"
+            type="text"
+            v-model="ingredient.name"
+            :placeholder="$t('ingridient')"
+          />
         </p>
         <p class="control">
           <button class="button is-secondary" @click="removeIngridient(ingredient)">
@@ -37,20 +79,25 @@
         </button>
       </li>
     </ul>
-    <h2 class="subtitle is-4">Preparation</h2>
+    <h2 class="subtitle is-4">{{ $t('preparation') }}</h2>
     <div class="field has-addons">
       <p class="control has-icons-left">
-        <input class="input" type="text" v-model="recipe.cookTimeInMinutes" placeholder="Minutes" />
+        <input
+          class="input"
+          type="text"
+          v-model="recipe.cookTimeInMinutes"
+          :placeholder="$t('minutes')"
+        />
         <span class="icon is-small is-left">
           <font-awesome-icon icon="clock" />
         </span>
       </p>
     </div>
-    <textarea class="textarea" v-model="recipe.preparation" placeholder="Preparation"></textarea>
+    <textarea class="textarea" v-model="recipe.preparation" :placeholder="$t('preparation')" />
     <br>
     <div class="buttons">
-      <button class="button" @click="$router.back()">Cancel</button>
-      <button class="button is-primary" @click="save()">Save</button>
+      <button class="button" @click="$router.back()">{{ $t('cancel') }}</button>
+      <button class="button is-primary" @click="save()">{{ $t('save') }}</button>
     </div>
   </div>
 </template>

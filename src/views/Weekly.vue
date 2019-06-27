@@ -1,6 +1,17 @@
+<i18n>
+{
+  "en": {
+    "title": "Weekly"
+  },
+  "de": {
+    "title": "Wochenplan"
+  }
+}
+</i18n>
+
 <template>
   <div>
-    <h1 class="title">Weekly</h1>
+    <h1 class="title">{{ $t('title') }}</h1>
     <week-input />
     <table class="table">
 

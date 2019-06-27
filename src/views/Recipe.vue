@@ -1,3 +1,22 @@
+<i18n>
+{
+  "en": {
+    "ingredients": "Ingredients",
+    "putOnList": "Put on list!",
+    "preparation": "Preparation",
+    "preparationTime": "Preparation time",
+    "cookNow": "Cook now!"
+  },
+  "de": {
+    "ingredients": "Zutaten",
+    "putOnList": "Auf die Liste!",
+    "preparation": "Zubereitung",
+    "preparationTime": "Dauer",
+    "cookNow": "Jetz kochen!"
+  }
+}
+</i18n>
+
 <template>
   <div class="content">
     <h1 class="title is-spaced is-flex">
@@ -14,7 +33,7 @@
         </button>
       </div>
     </h1>
-    <h2 class="subtitle is-4">Ingredients</h2>
+    <h2 class="subtitle is-4">{{ $t('ingredients') }}</h2>
     <div class="field has-addons">
       <p class="control has-icons-left">
         <input class="input" type="number" min="1" max="99" step="1" v-model="recipe.peopleCount">
@@ -29,14 +48,14 @@
       </li>
     </ul>
     <button class="button is-primary" @click="putItemsOnShoppingList()">
-      Put on list!
+      {{ $t('putOnList') }}
     </button>
     &nbsp;
     <font-awesome-icon icon="check" v-if="didPutOnList" size="2x" class="has-text-success"/>
-    <h2 class="subtitle is-4">Preparation</h2>
-    <p>Preparation time: {{ recipe.cookTimeInMinutes }}m</p>
+    <h2 class="subtitle is-4">{{ $t('preparation') }}</h2>
+    <p>{{ $t('preparationTime') }}: {{ recipe.cookTimeInMinutes }}m</p>
     <p>{{ recipe.preparation }}</p>
-    <button class="button is-primary">Cook now!</button>
+    <button class="button is-primary">{{ $t('cookNow') }}</button>
     <qr-code-dialog
       :title="recipe.title"
       v-model="recipe"

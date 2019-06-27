@@ -1,3 +1,22 @@
+<i18n>
+{
+  "en": {
+    "Home": "Home",
+    "Recipes": "Recipes",
+    "Weekly": "Weekly",
+    "Shopping list": "Shopping list",
+    "About": "About"
+  },
+  "de": {
+    "Home": "Home",
+    "Recipes": "Rezepte",
+    "Weekly": "Wochenplan",
+    "Shopping list": "Einkaufsliste",
+    "About": "Über"
+  }
+}
+</i18n>
+
 <template>
   <nav class="navbar is-fixed-top">
     <div class="navbar-brand">
@@ -21,9 +40,8 @@
             :key="items.indexOf(item)"
             :to="item.path"
             class="navbar-item"
-          >
-            {{ item.title }}
-          </router-link>
+            v-t="item.title"
+          />
         </div>
       </div>
     </transition>

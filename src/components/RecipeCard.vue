@@ -1,3 +1,18 @@
+<i18n>
+{
+  "en": {
+    "itemsOnList": "{ingredientsCount} ingridients",
+    "timeToPrepare": "{cookTimeInMinutes} minutes to prepare",
+    "cookNow": "Cook now!"
+  },
+  "de": {
+    "itemsOnList": "{ingredientsCount} Zutaten",
+    "timeToPrepare": "{cookTimeInMinutes} Minuten Zubereitungszeit",
+    "cookNow": "Jetz kochen!"
+  }
+}
+</i18n>
+
 <template>
   <div class="card">
     <header class="card-header">
@@ -13,13 +28,13 @@
     <div class="card-content">
       <div class="content">
         <ul>
-          <li>{{ recipe.ingredientsCount }} items on the list</li>
-          <li>{{ recipe.cookTimeInMinutes }} minutes to prepare</li>
+          <li>{{ $t('itemsOnList', { ingredientsCount: recipe.ingredientsCount }) }}</li>
+          <li>{{ $t('timeToPrepare', { cookTimeInMinutes: recipe.cookTimeInMinutes }) }}</li>
         </ul>
       </div>
     </div>
     <footer class="card-footer">
-      <router-link class="card-footer-item" :to="`/recipe/${recipe.title}`">Cook now!</router-link>
+      <router-link class="card-footer-item" :to="`/recipe/${recipe.title}`" v-t="'cookNow'" />
     </footer>
   </div>
 </template>
