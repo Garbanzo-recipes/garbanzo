@@ -4,7 +4,11 @@ module.exports = {
       locale: 'en',
       fallbackLocale: 'en',
       localeDir: 'locales',
-      enableInSFC: true
-    }
-  }
-}
+      enableInSFC: true,
+    },
+  },
+  publicPath: process.env.NODE_ENV === 'production' ? '/garbanzo/' : '/',
+  pwa: {
+    appleMobileWebAppCapable: 'yes',
+  },
+};
