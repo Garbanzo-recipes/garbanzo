@@ -1,6 +1,10 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/garbanzo/' : '/',
-  pwa: {
-    appleMobileWebAppCapable: 'yes',
-  },
-};
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: true
+    }
+  }
+}
