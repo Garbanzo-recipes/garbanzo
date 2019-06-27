@@ -66,9 +66,15 @@ export default {
       this.$emit('input', `${this.selectedYear}-W${this.selectedWeek}`);
     },
     canUseWeekInput() {
-      const testInput = document.createElement('input');
-      testInput.type = 'week';
-      return testInput.type !== 'text';
+      const hasWeekType = () => {
+        const testInput = document.createElement('input');
+        testInput.type = 'week';
+        return testInput.type !== 'text';
+      }
+
+      const isIOS = () => window.navigator.userAgent.match(/(iPod|iPhone|iPad)/);
+      
+      return hasWeekType() && !isIOS();
     },
   },
   computed: {
