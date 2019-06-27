@@ -45,7 +45,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VueQriously);
 
 Vue.config.productionTip = false;
-console.log(i18n);
+
 new Vue({
   router,
   store,

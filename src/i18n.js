@@ -15,7 +15,7 @@ function loadLocaleMessages() {
   });
   return messages;
 }
-console.log('lang', process.env.VUE_APP_I18N_LOCALE, window.navigator.language.split('-')[0]);
+
 export default new VueI18n({
   locale: process.env.VUE_APP_I18N_LOCALE || window.navigator.language.split('-')[0],
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
