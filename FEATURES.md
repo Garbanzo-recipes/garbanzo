@@ -5,14 +5,16 @@ Every time a feature is implemented, this file shall be updated accordingly.
 
 ## Feature list
 
+- [X] i18n
 - [ ] Collections of recipes a.k.a. Cookbooks or lists of recipes
   - [ ] Sharing of Cookbooks
 - [ ] Recipe
   - Basics
     - [ ] Recipe overview (before you get to the step-by-step guide)
-    - [ ] Material list (to buy)
+    - [X] Material list (to buy)
     - [ ] List of parts you need (tools)
     - [ ] Step by step list, which can contain timers etc.
+    - [X]
   - Meta information
     - [ ] Recipes in recipes (pizza contains of the ground and the tomato sauce, which are two recipes indeed)
     - [ ] Tagging of recipes
@@ -22,7 +24,8 @@ Every time a feature is implemented, this file shall be updated accordingly.
     - [ ] Append files (e.g. the source pdf)
     - [ ] OCR import of recipes
     - [ ] Import recipes from other sources (maybe by utilizing the Android sharing feature)
-- [ ] Shopping list (contains materials from recipes you want to cook)
+    - [X] Share by QR code(s) (Import/export)
+- [X] Shopping list (contains materials from recipes you want to cook)
 - [ ] Cooking Events
     - [ ] Create events: Assemble the recipes, snacks, beverages etc. for the event (e.g. for a BBQ - marinade, salads, bread...)
     - [ ] Calendar (appoint meals you want to cook to days in a week for example, invite friends)
