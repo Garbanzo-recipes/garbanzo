@@ -23,7 +23,7 @@
     <div class="field has-addons" v-if="!canUseWeekInput()">
       <div class="control">
         <div class="select">
-          <select @change="handleSelectEvent()">
+          <select @change="handleSelectEvent()" v-model="selectedWeek">
             <option
               v-for="week in weeks"
               :key="weeks.indexOf(week)"
