@@ -1,10 +1,18 @@
 <i18n>
 {
   "en": {
-    "title": "Weekly"
+    "title": "Weekly",
+    "breakfast": "Breakfast",
+    "lunch": "Lunch",
+    "afternoon": "Afternoon",
+    "dinner": "Dinner"
   },
   "de": {
-    "title": "Wochenplan"
+    "title": "Wochenplan",
+    "breakfast": "Frühstück",
+    "lunch": "Mittagessen",
+    "afternoon": "Nachmittag",
+    "dinner": "Abendessen"
   }
 }
 </i18n>
@@ -26,19 +34,25 @@
         </header>
         <div class="card-content">
           <div class="menu">
-            <p class="menu-label">Frühstück</p>
+            <p class="menu-label">{{ $t('breakfast') }}</p>
             <ul class="menu-list">
               <li v-for="item in day.breakfast" :key="day.breakfast.indexOf(item)">
                 <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
               </li>
             </ul>
-            <p class="menu-label">Mittagessen</p>
+            <p class="menu-label">{{ $t('lunch') }}</p>
             <ul class="menu-list">
               <li v-for="item in day.lunch" :key="day.lunch.indexOf(item)">
                 <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
               </li>
             </ul>
-            <p class="menu-label">Abendessen</p>
+            <p class="menu-label">{{ $t('afternoon') }}</p>
+            <ul class="menu-list">
+              <li v-for="item in day.afternoon" :key="day.afternoon.indexOf(item)">
+                <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
+              </li>
+            </ul>
+            <p class="menu-label">{{ $t('dinner') }}</p>
             <ul class="menu-list">
               <li v-for="item in day.dinner" :key="day.dinner.indexOf(item)">
                 <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
@@ -50,7 +64,7 @@
           <!--<a href="#" class="card-footer-item">Save</a>
           <a class="card-footer-item"><font-awesome-icon icon="edit" /></a>
           <a href="#" class="card-footer-item">Delete</a>-->
-          <router-link class="card-footer-item" :to="`/day/${day.date.toISOString().split('T')[0]}`">
+          <router-link class="card-footer-item" :to="`/day/${dateToIsoDate(day.date)}`">
             <font-awesome-icon icon="edit" />
           </router-link>
         </footer>
@@ -125,6 +139,9 @@ export default {
       return new Intl.DateTimeFormat(window.navigator.language, {
         weekday: 'long',
       }).formatToParts(date).find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
+    },
+    dateToIsoDate(date) {
+      return date.toISOString().split('T')[0];
     },
   },
 };
