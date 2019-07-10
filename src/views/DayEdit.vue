@@ -1,6 +1,10 @@
 <template>
   <div class="content">
     <h1 class="title">{{ dateToLocaleString($route.params.date) }}</h1>
+    <div class="buttons">
+      <button class="button" @click="$router.back()">{{ $t('cancel') }}</button>
+      <button class="button is-primary" @click="save()">{{ $t('save') }}</button>
+    </div>
     <div class="columns">
       <div class="column">
         <div class="list">
@@ -60,6 +64,7 @@ export default {
           'Tiramisu',
           'Tomatensuppe',
         ],
+        afternoon: [],
         dinner: [],
         date: new Date('2019-07-22'),
       },
