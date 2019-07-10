@@ -29,19 +29,19 @@
             <p class="menu-label">Frühstück</p>
             <ul class="menu-list">
               <li v-for="item in day.breakfast" :key="day.breakfast.indexOf(item)">
-                <router-link :to="`/recipes/${item}`">{{ item }}</router-link>
+                <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
               </li>
             </ul>
             <p class="menu-label">Mittagessen</p>
             <ul class="menu-list">
               <li v-for="item in day.lunch" :key="day.lunch.indexOf(item)">
-                <router-link :to="`/recipes/${item}`">{{ item }}</router-link>
+                <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
               </li>
             </ul>
             <p class="menu-label">Abendessen</p>
             <ul class="menu-list">
               <li v-for="item in day.dinner" :key="day.dinner.indexOf(item)">
-                <router-link :to="`/recipes/${item}`">{{ item }}</router-link>
+                <router-link :to="`/recipe/${item}`">{{ item }}</router-link>
               </li>
             </ul>
           </div>

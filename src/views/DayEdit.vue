@@ -1,42 +1,48 @@
 <template>
   <div class="content">
-    <h1 class="title">{{ $route.params.date }}</h1>
-    <div class="is-flex">
-      <div class="list">
-        <div class="list-item has-text-weight-bold">Frühstück</div>
-        <div v-for="item in day.breakfast" :key="day.breakfast.indexOf(item)" class="list-item">
-          <div class="level">
-            <div class="level-left">{{ item }}</div>
-            <div class="level-right">
-              <a class="delete"></a>
+    <h1 class="title">{{ dateToLocaleString($route.params.date) }}</h1>
+    <div class="columns">
+      <div class="column">
+        <div class="list">
+          <div class="list-item has-text-weight-bold">Frühstück</div>
+          <div v-for="item in day.breakfast" :key="day.breakfast.indexOf(item)" class="list-item">
+            <div class="level is-mobile">
+              <div class="level-left">{{ item }}</div>
+              <div class="level-right">
+                <a class="delete"></a>
+              </div>
             </div>
           </div>
+          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
         </div>
-        <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
       </div>
-      <div class="list">
-        <div class="list-item has-text-weight-bold">Mittagessen</div>
-        <div v-for="item in day.lunch" :key="day.lunch.indexOf(item)" class="list-item">
-          <div class="level">
-            <div class="level-left">{{ item }}</div>
-            <div class="level-right">
-              <a class="delete"></a>
+      <div class="column">
+        <div class="list">
+          <div class="list-item has-text-weight-bold">Mittagessen</div>
+          <div v-for="item in day.lunch" :key="day.lunch.indexOf(item)" class="list-item">
+            <div class="level is-mobile">
+              <div class="level-left">{{ item }}</div>
+              <div class="level-right">
+                <a class="delete"></a>
+              </div>
             </div>
           </div>
+          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
         </div>
-        <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
       </div>
-      <div class="list">
-        <div class="list-item has-text-weight-bold">Abendessen</div>
-        <div v-for="item in day.dinner" :key="day.dinner.indexOf(item)" class="list-item">
-          <div class="level">
-            <div class="level-left">{{ item }}</div>
-            <div class="level-right">
-              <a class="delete"></a>
+      <div class="column">
+        <div class="list">
+          <div class="list-item has-text-weight-bold">Abendessen</div>
+          <div v-for="item in day.dinner" :key="day.dinner.indexOf(item)" class="list-item">
+            <div class="level is-mobile">
+              <div class="level-left">{{ item }}</div>
+              <div class="level-right">
+                <a class="delete"></a>
+              </div>
             </div>
           </div>
+          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
         </div>
-        <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
       </div>
     </div>
   </div>
@@ -58,6 +64,16 @@ export default {
         date: new Date('2019-07-22'),
       },
     };
+  },
+  methods: {
+    dateToLocaleString(date) {
+      return Intl.DateTimeFormat(window.navigator.language, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }).format(new Date(date));
+    },
   },
 }
 </script>
