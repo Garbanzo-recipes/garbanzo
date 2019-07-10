@@ -118,7 +118,7 @@ export default {
     },
     removeItem(list, item) {
       console.log('removeItem', list, item);
-      list = list.filter(n => n !== item);
+      // list = list.filter(n => n !== item);
       this.$forceUpdate();
     },
   },

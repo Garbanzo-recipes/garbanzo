@@ -153,7 +153,10 @@ export default {
 }
 
 .has-gap-20px {
-  gap: 20px;
+  margin: -0.75rem;
+}
+.has-gap-20px>* {
+  margin: 0.75rem;
 }
 
 .has-border-radius-6px {
