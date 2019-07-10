@@ -17,7 +17,7 @@
     <div class="is-flex is-wrapping has-gap-20px">
       <div class="card has-border-radius-6px" v-for="day in days" :key="days.indexOf(day)">
         <header class="card-header">
-          <p class="card-header-title">{{ day.name }}</p>
+          <p class="card-header-title">{{ dateToWeekDay(day.date) }}</p>
           <!--<a href="#" class="card-header-icon" aria-label="more options">
             <span class="icon">
               <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -25,36 +25,35 @@
           </a>-->
         </header>
         <div class="card-content">
-          <div class="content">
-            Frühstück <button class="button is-small"><font-awesome-icon icon="plus" /></button>
-            <ul>
+          <div class="menu">
+            <p class="menu-label">Frühstück</p>
+            <ul class="menu-list">
               <li v-for="item in day.breakfast" :key="day.breakfast.indexOf(item)">
-                {{ item }} <button class="button is-small"><font-awesome-icon icon="minus" /></button>
+                <router-link :to="`/recipes/${item}`">{{ item }}</router-link>
               </li>
             </ul>
-          </div>
-          <div class="content">
-            Mittagessen <button class="button is-small"><font-awesome-icon icon="plus" /></button>
-            <ul>
+            <p class="menu-label">Mittagessen</p>
+            <ul class="menu-list">
               <li v-for="item in day.lunch" :key="day.lunch.indexOf(item)">
-                {{ item }} <button class="button is-small"><font-awesome-icon icon="minus" /></button>
+                <router-link :to="`/recipes/${item}`">{{ item }}</router-link>
               </li>
             </ul>
-          </div>
-          <div class="content">
-            Abendessen <button class="button is-small"><font-awesome-icon icon="plus" /></button>
-            <ul>
+            <p class="menu-label">Abendessen</p>
+            <ul class="menu-list">
               <li v-for="item in day.dinner" :key="day.dinner.indexOf(item)">
-                {{ item }} <button class="button is-small"><font-awesome-icon icon="minus" /></button>
+                <router-link :to="`/recipes/${item}`">{{ item }}</router-link>
               </li>
             </ul>
           </div>
         </div>
-        <!--<footer class="card-footer">
-          <a href="#" class="card-footer-item">Save</a>
-          <a href="#" class="card-footer-item">Edit</a>
-          <a href="#" class="card-footer-item">Delete</a>
-        </footer>-->
+        <footer class="card-footer">
+          <!--<a href="#" class="card-footer-item">Save</a>
+          <a class="card-footer-item"><font-awesome-icon icon="edit" /></a>
+          <a href="#" class="card-footer-item">Delete</a>-->
+          <router-link class="card-footer-item" :to="`/day/${day.date.toISOString().split('T')[0]}`">
+            <font-awesome-icon icon="edit" />
+          </router-link>
+        </footer>
       </div>
     </div>
   </div>
@@ -73,7 +72,6 @@ export default {
       weekYear: '2019-W30',
       days: [
         {
-          name: 'Montag',
           breakfast: [],
           lunch: [
             'Low Knead Pizza',
@@ -81,45 +79,53 @@ export default {
             'Tomatensuppe',
           ],
           dinner: [],
+          date: new Date('2019-07-22'),
         },
         {
-          name: 'Dienstag',
           breakfast: [],
           lunch: [],
           dinner: [],
+          date: new Date('2019-07-23'),
         },
         {
-          name: 'Mittwoch',
           breakfast: [],
           lunch: [],
           dinner: [],
+          date: new Date('2019-07-24'),
         },
         {
-          name: 'Donnerstag',
           breakfast: [],
           lunch: [],
           dinner: [],
+          date: new Date('2019-07-25'),
         },
         {
-          name: 'Freitag',
           breakfast: [],
           lunch: [],
           dinner: [],
+          date: new Date('2019-07-26'),
         },
         {
-          name: 'Samstag',
           breakfast: [],
           lunch: [],
           dinner: [],
+          date: new Date('2019-07-27'),
         },
         {
-          name: 'Sonntag',
           breakfast: [],
           lunch: [],
           dinner: [],
+          date: new Date('2019-07-28'),
         },
       ],
     };
+  },
+  methods: {
+    dateToWeekDay(date) {
+      return new Intl.DateTimeFormat(window.navigator.language, {
+        weekday: 'long',
+      }).formatToParts(date).find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
+    },
   },
 };
 </script>

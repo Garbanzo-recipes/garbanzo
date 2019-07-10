@@ -5,6 +5,7 @@ import Recipes from './views/Recipes.vue';
 import Recipe from './views/Recipe.vue';
 import RecipeEdit from './views/RecipeEdit.vue';
 import Weekly from './views/Weekly.vue';
+import DayEdit from './views/DayEdit.vue';
 import ShoppingList from './views/ShoppingList.vue';
 import About from './views/About.vue';
 
@@ -59,6 +60,11 @@ export default new Router({
       meta: {
         title: 'Weekly',
       },
+    },
+    {
+      path: '/day/:date',
+      name: 'day-edit',
+      component: DayEdit,
     },
     {
       path: '/shopping-list',
