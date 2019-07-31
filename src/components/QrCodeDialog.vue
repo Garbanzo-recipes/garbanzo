@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { setInterval } from 'timers';
-
 const splitIntoChunks = (str, chunkLength = 100, rightPad = ' ') => {
   const chunks = [];
 
