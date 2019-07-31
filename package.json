@@ -10,8 +10,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.20",
+    "@fortawesome/free-solid-svg-icons": "^5.10.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "bulma": "^0.7.5",
     "date-fns": "^1.30.1",
@@ -25,12 +25,12 @@
     "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
-    "@kazupon/vue-i18n-loader": "^0.3.0",
+    "@kazupon/vue-i18n-loader": "^0.4.0",
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-eslint": "^3.9.2",
     "@vue/cli-plugin-pwa": "^3.9.0",
     "@vue/cli-plugin-unit-jest": "^3.9.0",
-    "@vue/cli-service": "^3.9.2",
+    "@vue/cli-service": "^3.9.3",
     "@vue/eslint-config-airbnb": "^4.0.1",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
