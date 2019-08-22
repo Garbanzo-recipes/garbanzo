@@ -84,64 +84,21 @@ export default {
   data() {
     return {
       weekYear: '2019-W30',
-      days: [
-        {
-          breakfast: [],
-          lunch: [
-            'Low Knead Pizza',
-            'Tiramisu',
-            'Tomatensuppe',
-          ],
-          dinner: [],
-          date: new Date('2019-07-22'),
-        },
-        {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-          date: new Date('2019-07-23'),
-        },
-        {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-          date: new Date('2019-07-24'),
-        },
-        {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-          date: new Date('2019-07-25'),
-        },
-        {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-          date: new Date('2019-07-26'),
-        },
-        {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-          date: new Date('2019-07-27'),
-        },
-        {
-          breakfast: [],
-          lunch: [],
-          dinner: [],
-          date: new Date('2019-07-28'),
-        },
-      ],
     };
   },
   methods: {
     dateToWeekDay(date) {
       return new Intl.DateTimeFormat(window.navigator.language, {
         weekday: 'long',
-      }).formatToParts(date).find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
+      }).formatToParts(new Date(date)).find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
     },
     dateToIsoDate(date) {
-      return date.toISOString().split('T')[0];
+      return (new Date(date)).toISOString().split('T')[0];
+    },
+  },
+  computed: {
+    days() {
+      return this.$store.getters.weekData(this.weekYear);
     },
   },
 };
