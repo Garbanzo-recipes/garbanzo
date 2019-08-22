@@ -72,7 +72,7 @@ export default {
         date: '2019-07-28',
       });
     },
-    dayData: state => day => state.weekly.find(item => item.date === day) || {
+    dayData: state => day => deepCopy(state.weekly.find(item => item.date === day)) || {
       breakfast: [],
       lunch: [],
       dinner: [],
