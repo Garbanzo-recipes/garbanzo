@@ -97,5 +97,8 @@ export default {
       return range(1970, 2038);
     },
   },
+  mounted() {
+    [, this.selectedYear, this.selectedWeek] = /(\d{4})-W(\d{1,2})/.exec(this.value);
+  },
 };
 </script>
