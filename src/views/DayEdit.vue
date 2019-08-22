@@ -29,61 +29,43 @@
       <button class="button is-primary" @click="save()">{{ $t('save') }}</button>
     </div>
     <div class="columns">
-      <div class="column">
+      <div class="column" v-for="list in lists" :key="lists.indexOf(list)">
         <div class="list">
-          <div class="list-item has-text-weight-bold">{{ $t('breakfast') }}</div>
-          <div v-for="item in day.breakfast" :key="day.breakfast.indexOf(item)" class="list-item">
+          <div class="list-item has-text-weight-bold">{{ $t(list) }}</div>
+          <div v-for="item in day[list]" :key="day[list].indexOf(item)" class="list-item">
             <div class="level is-mobile">
               <div class="level-left">{{ item }}</div>
               <div class="level-right">
-                <a class="delete" @click="removeItem(day.breakfast, item)"></a>
+                <a class="delete" @click="removeItem(list, item)"></a>
               </div>
             </div>
           </div>
-          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
+          <a class="list-item has-text-centered" @click="showModal = true">
+            <font-awesome-icon icon="plus" />
+          </a>
         </div>
       </div>
-      <div class="column">
-        <div class="list">
-          <div class="list-item has-text-weight-bold">{{ $t('lunch') }}</div>
-          <div v-for="item in day.lunch" :key="day.lunch.indexOf(item)" class="list-item">
-            <div class="level is-mobile">
-              <div class="level-left">{{ item }}</div>
-              <div class="level-right">
-                <a class="delete" @click="removeItem(day.lunch, item)"></a>
-              </div>
-            </div>
+    </div>
+    <div class="modal" :class="{ 'is-active': showModal }">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">{{ $t('addMeal') }}</p>
+          <button class="delete" aria-label="close" @click="showModal = false"></button>
+        </header>
+        <section class="modal-card-body">
+          <div class="select">
+            <select v-model="selectedMeal">
+              <option v-for="meal in meals" :key="meals.indexOf(meal)" :value="meal.title">
+                {{ meal.title }}
+              </option>
+            </select>
           </div>
-          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
-        </div>
-      </div>
-      <div class="column">
-        <div class="list">
-          <div class="list-item has-text-weight-bold">{{ $t('afternoon') }}</div>
-          <div v-for="item in day.afternoon" :key="day.afternoon.indexOf(item)" class="list-item">
-            <div class="level is-mobile">
-              <div class="level-left">{{ item }}</div>
-              <div class="level-right">
-                <a class="delete" @click="removeItem(day.afternoon, item)"></a>
-              </div>
-            </div>
-          </div>
-          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
-        </div>
-      </div>
-      <div class="column">
-        <div class="list">
-          <div class="list-item has-text-weight-bold">{{ $t('dinner') }}</div>
-          <div v-for="item in day.dinner" :key="day.dinner.indexOf(item)" class="list-item">
-            <div class="level is-mobile">
-              <div class="level-left">{{ item }}</div>
-              <div class="level-right">
-                <a class="delete" @click="removeItem(day.dinner, item)"></a>
-              </div>
-            </div>
-          </div>
-          <a class="list-item has-text-centered"><font-awesome-icon icon="plus" /></a>
-        </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" @click="showModal = false">{{ $t('save') }}</button>
+          <button class="button" @click="showModal = false">{{ $t('cancel') }}</button>
+        </footer>
       </div>
     </div>
   </div>
@@ -94,17 +76,10 @@ export default {
   name: 'day-edit',
   data() {
     return {
-      day: {
-        breakfast: [],
-        lunch: [
-          'Low Knead Pizza',
-          'Tiramisu',
-          'Tomatensuppe',
-        ],
-        afternoon: [],
-        dinner: [],
-        date: new Date('2019-07-22'),
-      },
+      day: {},
+      lists: ['breakfast', 'lunch', 'afternoon', 'dinner'],
+      selectedMeal: '',
+      showModal: false,
     };
   },
   methods: {
@@ -117,10 +92,17 @@ export default {
       }).format(new Date(date));
     },
     removeItem(list, item) {
-      console.log('removeItem', list, item);
-      // list = list.filter(n => n !== item);
-      this.$forceUpdate();
+      this.day[list] = this.day[list].filter(n => n !== item);
+      //this.$forceUpdate();
     },
+  },
+  computed: {
+    meals() {
+      return this.$store.getters.recipeList();
+    }
+  },
+  mounted() {
+    this.day = this.$store.getters.dayData(this.$route.params.date);
   },
 };
 </script>
