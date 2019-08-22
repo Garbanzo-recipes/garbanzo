@@ -3,15 +3,15 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import recipes from './modules/recipes';
 import shoppingList from './modules/shoppingList';
+import weekly from './modules/weekly';
 
 Vue.use(Vuex);
-
-const deepCopy = obj => JSON.parse(JSON.stringify(obj));
 
 export default new Vuex.Store({
   modules: {
     recipes,
     shoppingList,
+    weekly,
   },
   plugins: [createPersistedState()],
 });
