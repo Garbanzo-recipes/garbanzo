@@ -16,6 +16,9 @@ import {
   faQrcode,
   faAngleDown,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VueQriously from 'vue-qriously';
 import App from './App.vue';
@@ -39,6 +42,7 @@ import i18n from './i18n';
   faUserFriends,
   faQrcode,
   faAngleDown,
+  faGithub,
 ].forEach(item => library.add(item));
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

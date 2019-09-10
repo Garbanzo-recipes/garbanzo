@@ -7,6 +7,7 @@ import RecipeEdit from './views/RecipeEdit.vue';
 import Weekly from './views/Weekly.vue';
 import DayEdit from './views/DayEdit.vue';
 import ShoppingList from './views/ShoppingList.vue';
+import Settings from './views/Settings.vue';
 import About from './views/About.vue';
 
 Vue.use(Router);
@@ -72,6 +73,14 @@ export default new Router({
       component: ShoppingList,
       meta: {
         title: 'Shopping list',
+      },
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings,
+      meta: {
+        title: 'Settings',
       },
     },
     {
