@@ -80,6 +80,7 @@ export default {
     },
   },
   mutations: {
+    /*
     addToShoppingList(state, payload) {
       state.shoppingList = state.shoppingList.concat(payload); // eslint-disable-line
     },
@@ -89,5 +90,6 @@ export default {
     updateShoppingList(state, payload) {
       state.shoppingList = deepCopy(payload); // eslint-disable-line
     },
+    */
   },
 };

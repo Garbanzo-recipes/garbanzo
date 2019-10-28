@@ -1,6 +1,8 @@
 <template>
   <div class="box">
-    <h4 class="title is-5"><font-awesome-icon :icon="['fab', 'github']" /> Github</h4>
+    <h4 class="title is-5 has-text-centered">
+      <font-awesome-icon :icon="['fab', 'github']" /> Github
+    </h4>
     <form @submit="save">
       <div class="field is-horizontal">
         <div class="field-label is-normal">
@@ -74,3 +76,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.box {
+  max-width: 525px;
+}
+</style>

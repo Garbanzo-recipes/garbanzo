@@ -48,30 +48,30 @@
         v-for="ingredient in recipe.ingredients"
         :key="recipe.ingredients.indexOf(ingredient)"
       >
-        <p class="control">
+        <div class="control">
           <input
             class="input"
             type="number"
             v-model="ingredient.quantity"
             :placeholder="$t('quantity')"
           />
-        </p>
-        <p class="control">
+        </div>
+        <div class="control">
           <input class="input" type="text" v-model="ingredient.unit" :placeholder="$t('unit')">
-        </p>
-        <p class="control">
+        </div>
+        <div class="control">
           <input
             class="input"
             type="text"
             v-model="ingredient.name"
             :placeholder="$t('ingridient')"
           />
-        </p>
-        <p class="control">
+        </div>
+        <div class="control">
           <button class="button is-secondary" @click="removeIngridient(ingredient)">
             <font-awesome-icon icon="minus" />
           </button>
-        </p>
+        </div>
       </li>
       <li class="field is-horizontal">
         <button class="button is-secondary" @click="addEmptyIngridient()">

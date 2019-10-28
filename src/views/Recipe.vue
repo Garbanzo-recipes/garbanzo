@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     putItemsOnShoppingList() {
-      this.$store.commit('addToShoppingList', this.recipe.ingredients.map(n => Object.assign({}, n, {
+      this.$store.commit('shoppingList/addItem', this.recipe.ingredients.map(n => Object.assign({}, n, {
         quantity: n.quantity * this.recipe.peopleCount,
         from: this.recipe.title,
       })));

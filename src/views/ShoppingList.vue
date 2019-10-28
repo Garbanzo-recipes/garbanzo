@@ -100,8 +100,8 @@ export default {
     },
     clearShoppingList() {
       this.toggleClearAllDialog();
-      this.$store.commit('clearShoppingList');
-      this.items = this.$store.getters.shoppingList;
+      this.$store.commit('shoppingList/clear');
+      this.items = this.$store.getters['shoppingList/entries'];
     },
     toggleClearSelectedDialog() {
       this.showClearSelectedDialog = !this.showClearSelectedDialog;
@@ -117,12 +117,12 @@ export default {
           delete newItem.checked;
           return newItem;
         });
-      this.$store.commit('updateShoppingList', updatedList);
-      this.items = this.$store.getters.shoppingList;
+      this.$store.commit('shoppingList/update', updatedList);
+      this.items = this.$store.getters['shoppingList/entries'];
     },
   },
   mounted() {
-    this.items = this.$store.getters.shoppingList;
+    this.items = this.$store.getters['shoppingList/entries'];
   },
 };
 </script>
