@@ -98,7 +98,7 @@ export default {
   },
   computed: {
     days() {
-      return this.$store.getters.weekData(this.weekYear);
+      return this.$store.getters['weekly/weekData'](this.weekYear);
     },
   },
 };

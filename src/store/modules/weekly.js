@@ -8,6 +8,7 @@ import {
 const deepCopy = obj => JSON.parse(JSON.stringify(obj));
 
 export default {
+  namespaced: true,
   state: {
     weekly: [
       {

@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted() {
-    [this.recipeOfTheDay] = this.$store.getters.recipeList();
+    [this.recipeOfTheDay] = this.$store.getters['recipes/list']();
     this.$forceUpdate();
   },
 };

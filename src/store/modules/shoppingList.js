@@ -1,28 +1,25 @@
-import Vue from 'vue';
-
 const deepCopy = obj => JSON.parse(JSON.stringify(obj));
 
 export default {
   namespaced: true,
-  state: [],
+  state: {
+    entries: [],
+  },
   getters: {
-    entries: (state) => {
-      console.log('entries');
-      return deepCopy(state);
-    },
+    entries: state => deepCopy(state.entries),
   },
   mutations: {
-    addItem(state, payload) {
-      console.log('addItem', state, payload);
-      Vue.set(state, [...state, ...((Array.isArray(payload) ? payload : [payload]))]);
-      state = [...state, ...((Array.isArray(payload) ? payload : [payload]))]; // eslint-disable-line
-      console.log('addItem', state);
+    addItems(state, payload) {
+      state.entries = [...state.entries, ...payload];
     },
-    clear(state) { // eslint-disable-line no-unused-vars
-      state = []; // eslint-disable-line no-param-reassign
+    addItem(state, payload) {
+      state.entries = [...state.entries, payload];
+    },
+    clear(state) {
+      state.entries = [];
     },
     update(state, payload) {
-      state = deepCopy(payload); // eslint-disable-line
+      state.entries = deepCopy(payload);
     },
   },
 };

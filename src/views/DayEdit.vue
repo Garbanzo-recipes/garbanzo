@@ -93,16 +93,15 @@ export default {
     },
     removeItem(list, item) {
       this.day[list] = this.day[list].filter(n => n !== item);
-      //this.$forceUpdate();
     },
   },
   computed: {
     meals() {
-      return this.$store.getters.recipeList();
-    }
+      return this.$store.getters['recipes/list']();
+    },
   },
   mounted() {
-    this.day = this.$store.getters.dayData(this.$route.params.date);
+    this.day = this.$store.getters['weekly/dayData'](this.$route.params.date);
   },
 };
 </script>

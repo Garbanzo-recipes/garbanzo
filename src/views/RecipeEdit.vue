@@ -126,12 +126,12 @@ export default {
     },
     save() {
       if (this.$route.path !== '/recipe/new') {
-        this.$store.commit('updateRecipe', {
+        this.$store.commit('recipes/updateRecipe', {
           originalTitle: this.originalTitle,
           recipe: this.recipe,
         });
       } else {
-        this.$store.commit('addRecipe', this.recipe);
+        this.$store.commit('recipes/addRecipe', this.recipe);
       }
 
       this.$router.push(`/recipe/${this.recipe.title}`);
@@ -139,7 +139,7 @@ export default {
   },
   mounted() {
     if (this.$route.path !== '/recipe/new') {
-      this.recipe = this.$store.getters.recipeByTitle(this.$route.params.title);
+      this.recipe = this.$store.getters['recipes/recipeByTitle'](this.$route.params.title);
       this.originalTitle = this.recipe.title;
     }
   },

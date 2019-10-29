@@ -132,7 +132,7 @@ export default {
     removeRecipe(recipe) {
       this.toggleRemoveRecipeDialog();
       this.$store.commit('removeRecipe', recipe);
-      this.recipes = this.$store.getters.recipeList();
+      this.recipes = this.$store.getters['recipes/list']();
     },
     downloadRecipes() {
       this.downloadDataAsFile('Recipes.json', JSON.stringify(this.$store.state.recipes));
@@ -154,12 +154,12 @@ export default {
     },
     importRecipeFromQrCode(content) {
       this.toggleQrCodeScannerDialog();
-      this.$store.commit('addRecipe', JSON.parse(content));
-      this.recipes = this.$store.getters.recipeList();
+      this.$store.commit('recipes/addRecipe', JSON.parse(content));
+      this.recipes = this.$store.getters['recipes/list']();
     },
   },
   mounted() {
-    this.recipes = this.$store.getters.recipeList();
+    this.recipes = this.$store.getters['recipes/list']();
   },
 };
 </script>

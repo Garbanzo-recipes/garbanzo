@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     putItemsOnShoppingList() {
-      this.$store.commit('shoppingList/addItem', this.recipe.ingredients.map(n => Object.assign({}, n, {
+      this.$store.commit('shoppingList/addItems', this.recipe.ingredients.map(n => Object.assign({}, n, {
         quantity: n.quantity * this.recipe.peopleCount,
         from: this.recipe.title,
       })));
@@ -93,7 +93,7 @@ export default {
     },
   },
   mounted() {
-    this.recipe = this.$store.getters.recipeByTitle(this.$route.params.title);
+    this.recipe = this.$store.getters['recipes/recipeByTitle'](this.$route.params.title);
   },
 };
 </script>
