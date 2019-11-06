@@ -55,7 +55,7 @@ export default new Router({
       ],
     },
     {
-      path: '/weekly',
+      path: '/weekly/:week?',
       name: 'weekly',
       component: Weekly,
       meta: {

@@ -7,7 +7,8 @@
     "afternoon": "Afternoon",
     "dinner": "Dinner",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "addMeal": "Add meal"
   },
   "de": {
     "title": "Wochenplan",
@@ -16,7 +17,8 @@
     "afternoon": "Nachmittag",
     "dinner": "Abendessen",
     "cancel": "Abbrechen",
-    "save": "Speichern"
+    "save": "Speichern",
+    "addMeal": "Essen hinzufügen"
   }
 }
 </i18n>
@@ -40,7 +42,7 @@
               </div>
             </div>
           </div>
-          <a class="list-item has-text-centered" @click="showModal = true">
+          <a class="list-item has-text-centered" @click="toggleAddModal(list)">
             <font-awesome-icon icon="plus" />
           </a>
         </div>
@@ -50,8 +52,8 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">{{ $t('addMeal') }}</p>
-          <button class="delete" aria-label="close" @click="showModal = false"></button>
+          <span class="modal-card-title">{{ $t('addMeal') }}</span>
+          <button class="delete" aria-label="close" @click="toggleAddModal()"></button>
         </header>
         <section class="modal-card-body">
           <div class="select">
@@ -63,8 +65,8 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" @click="showModal = false">{{ $t('save') }}</button>
-          <button class="button" @click="showModal = false">{{ $t('cancel') }}</button>
+          <button class="button is-success" @click="addMeal()">{{ $t('save') }}</button>
+          <button class="button" @click="toggleAddModal()">{{ $t('cancel') }}</button>
         </footer>
       </div>
     </div>
@@ -72,6 +74,8 @@
 </template>
 
 <script>
+import { format } from 'date-fns';
+
 export default {
   name: 'day-edit',
   data() {
@@ -80,6 +84,7 @@ export default {
       lists: ['breakfast', 'lunch', 'afternoon', 'dinner'],
       selectedMeal: '',
       showModal: false,
+      selectedTimeSlot: '',
     };
   },
   methods: {
@@ -93,6 +98,21 @@ export default {
     },
     removeItem(list, item) {
       this.day[list] = this.day[list].filter(n => n !== item);
+    },
+    save() {
+      this.$store.commit('weekly/updateDay', {
+        date: this.$route.params.date,
+        data: this.day,
+      });
+      this.$router.push(`/weekly/${format(this.day.date, "yyyy-'W'II")}`);
+    },
+    toggleAddModal(timeSlot) {
+      this.selectedTimeSlot = timeSlot;
+      this.showModal = !this.showModal;
+    },
+    addMeal() {
+      this.day[this.selectedTimeSlot].push(this.selectedMeal);
+      this.toggleAddModal();
     },
   },
   computed: {

@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import { format } from 'date-fns';
 import WeekInput from '@/components/WeekInput.vue';
 
 export default {
@@ -83,7 +84,7 @@ export default {
   },
   data() {
     return {
-      weekYear: '2019-W30',
+      weekYear: format(new Date(), "yyyy-'W'II"),
     };
   },
   methods: {
@@ -100,6 +101,11 @@ export default {
     days() {
       return this.$store.getters['weekly/weekData'](this.weekYear);
     },
+  },
+  mounted() {
+    if (this.$route.params.weekYear) {
+      this.weekYear = this.$route.params.weekYear;
+    }
   },
 };
 </script>

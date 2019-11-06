@@ -81,16 +81,11 @@ export default {
     },
   },
   mutations: {
-    /*
-    addToShoppingList(state, payload) {
-      state.shoppingList = state.shoppingList.concat(payload); // eslint-disable-line
+    updateDay(state, payload) {
+      console.log('updateDay', state, payload);
+      const indexOfDay = state.weekly.findIndex(item => item.date === payload.date);
+      state.weekly[indexOfDay] = payload.data;
+      console.log(state.weekly[indexOfDay]);
     },
-    clearShoppingList(state) {
-      state.shoppingList = []; // eslint-disable-line
-    },
-    updateShoppingList(state, payload) {
-      state.shoppingList = deepCopy(payload); // eslint-disable-line
-    },
-    */
   },
 };
