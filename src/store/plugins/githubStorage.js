@@ -16,7 +16,7 @@ export default function createGithubStoragePlugin() { // factory function
     //   - repo
     //   - active?
     store.subscribe((mutation, state) => {
-      console.log(mutation, state); // mutation.type, mutation.payload
+      console.log('gh store', mutation, state); // mutation.type, mutation.payload
     });
   };
 }

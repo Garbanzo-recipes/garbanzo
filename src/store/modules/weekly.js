@@ -12,6 +12,7 @@ export default {
   state: {
     weekly: [
       {
+        afternoon: [],
         breakfast: [],
         lunch: [
           'Low Knead Pizza',
@@ -22,36 +23,42 @@ export default {
         date: '2019-07-22',
       },
       {
+        afternoon: [],
         breakfast: [],
         lunch: [],
         dinner: [],
         date: '2019-07-23',
       },
       {
+        afternoon: [],
         breakfast: [],
         lunch: [],
         dinner: [],
         date: '2019-07-24',
       },
       {
+        afternoon: [],
         breakfast: [],
         lunch: [],
         dinner: [],
         date: '2019-07-25',
       },
       {
+        afternoon: [],
         breakfast: [],
         lunch: [],
         dinner: [],
         date: '2019-07-26',
       },
       {
+        afternoon: [],
         breakfast: [],
         lunch: [],
         dinner: [],
         date: '2019-07-27',
       },
       {
+        afternoon: [],
         breakfast: [],
         lunch: [],
         dinner: [],
@@ -65,27 +72,31 @@ export default {
 
       return eachDayOfInterval({
         start: firstDayOfTheWeek,
-        end: lastDayOfWeek(firstDayOfTheWeek),
-      }).map(day => state.weekly.find(item => item.date === format(day, 'yyyy-MM-dd')) || {
-        breakfast: [],
-        lunch: [],
-        dinner: [],
-        date: '2019-07-28',
-      });
+        end: lastDayOfWeek(firstDayOfTheWeek, { weekStartsOn: 1 }),
+      })
+        .map(day => state.weekly.find(item => item.date === format(day, 'yyyy-MM-dd')) || {
+          breakfast: [],
+          lunch: [],
+          dinner: [],
+          date: day,
+        });
     },
-    dayData: state => day => deepCopy(state.weekly.find(item => item.date === day)) || {
+    dayData: state => day => deepCopy(state.weekly.find(item => item.date === day) || {
+      afternoon: [],
       breakfast: [],
       lunch: [],
       dinner: [],
       date: day,
-    },
+    }),
   },
   mutations: {
     updateDay(state, payload) {
-      console.log('updateDay', state, payload);
       const indexOfDay = state.weekly.findIndex(item => item.date === payload.date);
-      state.weekly[indexOfDay] = payload.data;
-      console.log(state.weekly[indexOfDay]);
+      if (indexOfDay === -1) {
+        state.weekly.push(payload.data);
+      } else {
+        state.weekly[indexOfDay] = payload.data;
+      }
     },
   },
 };

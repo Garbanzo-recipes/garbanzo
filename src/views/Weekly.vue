@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import WeekInput from '@/components/WeekInput.vue';
 
 export default {
@@ -82,30 +82,29 @@ export default {
   components: {
     WeekInput,
   },
-  data() {
-    return {
-      weekYear: format(new Date(), "yyyy-'W'II"),
-    };
-  },
   methods: {
     dateToWeekDay(date) {
-      return new Intl.DateTimeFormat(window.navigator.language, {
-        weekday: 'long',
-      }).formatToParts(new Date(date)).find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
+      return new Intl
+        .DateTimeFormat(window.navigator.language, { weekday: 'long' })
+        .formatToParts(new Date(date))
+        .find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
     },
     dateToIsoDate(date) {
-      return (new Date(date)).toISOString().split('T')[0];
+      return format(date instanceof Date ? date : parseISO(date), 'yyyy-MM-dd');
     },
   },
   computed: {
     days() {
       return this.$store.getters['weekly/weekData'](this.weekYear);
     },
-  },
-  mounted() {
-    if (this.$route.params.weekYear) {
-      this.weekYear = this.$route.params.weekYear;
-    }
+    weekYear: {
+      get() {
+        return this.$route.params.weekYear || format(new Date(), "yyyy-'W'II");
+      },
+      set(value) {
+        this.$router.push(`/weekly/${value}`);
+      },
+    },
   },
 };
 </script>

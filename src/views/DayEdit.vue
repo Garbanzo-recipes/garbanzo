@@ -102,9 +102,9 @@ export default {
     save() {
       this.$store.commit('weekly/updateDay', {
         date: this.$route.params.date,
-        data: this.day,
+        data: this.day, // TODO: rename attribute!
       });
-      this.$router.push(`/weekly/${format(this.day.date, "yyyy-'W'II")}`);
+      this.$router.push(`/weekly/${format(new Date(this.day.date), "yyyy-'W'II")}`);
     },
     toggleAddModal(timeSlot) {
       this.selectedTimeSlot = timeSlot;
@@ -117,6 +117,11 @@ export default {
   },
   computed: {
     meals() {
+      if (this.day[this.selectedTimeSlot]) {
+        return this.$store.getters['recipes/list']()
+          .filter(meal => !this.day[this.selectedTimeSlot].includes(meal));
+      }
+
       return this.$store.getters['recipes/list']();
     },
   },

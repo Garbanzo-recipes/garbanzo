@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import { format } from 'date-fns';
+
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Recipes from './views/Recipes.vue';
@@ -55,11 +57,18 @@ export default new Router({
       ],
     },
     {
-      path: '/weekly/:week?',
+      path: '/weekly/:weekYear?',
       name: 'weekly',
       component: Weekly,
       meta: {
         title: 'Weekly',
+      },
+      beforeEnter: (to, from, next) => {
+        if (to.params.weekYear) {
+          next();
+        } else {
+          next(`/weekly/${format(new Date(), "yyyy-'W'II")}`);
+        }
       },
     },
     {
