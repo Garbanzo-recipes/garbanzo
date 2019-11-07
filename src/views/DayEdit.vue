@@ -56,12 +56,27 @@
           <button class="delete" aria-label="close" @click="toggleAddModal()"></button>
         </header>
         <section class="modal-card-body">
-          <div class="select">
-            <select v-model="selectedMeal">
-              <option v-for="meal in meals" :key="meals.indexOf(meal)" :value="meal.title">
-                {{ meal.title }}
-              </option>
-            </select>
+          <div class="field is-grouped">
+            <p class="control select">
+              <select v-model="selectedMeal">
+                <option v-for="meal in meals" :key="meals.indexOf(meal)" :value="meal.title">
+                  {{ meal.title }}
+                </option>
+              </select>
+            </p>
+            <p class="control has-icons-left">
+              <input
+                class="input"
+                type="number"
+                min="1"
+                max="99"
+                step="1"
+                v-model="peopleCount"
+              >
+              <span class="icon is-small is-left">
+                <font-awesome-icon icon="user-friends" />
+              </span>
+            </p>
           </div>
         </section>
         <footer class="modal-card-foot">
