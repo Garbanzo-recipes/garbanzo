@@ -5,14 +5,16 @@
     "breakfast": "Breakfast",
     "lunch": "Lunch",
     "afternoon": "Afternoon",
-    "dinner": "Dinner"
+    "dinner": "Dinner",
+    "addToShoppingList": "Add to shopping list"
   },
   "de": {
     "title": "Wochenplan",
     "breakfast": "Frühstück",
     "lunch": "Mittagessen",
     "afternoon": "Nachmittag",
-    "dinner": "Abendessen"
+    "dinner": "Abendessen",
+    "addToShoppingList": "Wocheneinkauf"
   }
 }
 </i18n>
@@ -20,17 +22,22 @@
 <template>
   <div>
     <h1 class="title">{{ $t('title') }}</h1>
-    <week-input v-model="weekYear" />
+    <div class="field is-grouped">
+      <p class="control">
+        <week-input v-model="weekYear" />
+      </p>
+      <p class="control">
+        <button class="button is-secondary" @click="addToShoppingList()">
+          {{ $t('addToShoppingList') }}
+        </button>
+      </p>
+    </div>
     <br>
     <div class="is-flex is-wrapping has-gap-20px">
       <div class="card has-border-radius-6px" v-for="day in days" :key="days.indexOf(day)">
         <header class="card-header">
           <p class="card-header-title">{{ dateToWeekDay(day.date) }}</p>
-          <!--<a href="#" class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </a>-->
+          <p class="card-header-title has-text-grey-light">{{ localizedDate(day.date) }}</p>
         </header>
         <div class="card-content">
           <div class="menu">
@@ -61,9 +68,6 @@
           </div>
         </div>
         <footer class="card-footer">
-          <!--<a href="#" class="card-footer-item">Save</a>
-          <a class="card-footer-item"><font-awesome-icon icon="edit" /></a>
-          <a href="#" class="card-footer-item">Delete</a>-->
           <router-link class="card-footer-item" :to="`/day/${dateToIsoDate(day.date)}`">
             <font-awesome-icon icon="edit" />
           </router-link>
@@ -83,6 +87,11 @@ export default {
     WeekInput,
   },
   methods: {
+    localizedDate(date) {
+      return new Intl
+        .DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' })
+        .format(date);
+    },
     dateToWeekDay(date) {
       return new Intl
         .DateTimeFormat(window.navigator.language, { weekday: 'long' })
