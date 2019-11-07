@@ -19,7 +19,10 @@ export default {
     return {
       navItems: this.$router.options.routes
         .filter(route => !!route.meta)
-        .map(route => ({ title: route.meta.title, path: route.path })),
+        .map(route => Object.assign({
+          title: route.meta.title,
+          path: route.path.replace(/:.*/, ''),
+        })),
     };
   },
 };
