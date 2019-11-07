@@ -89,7 +89,11 @@ export default {
   methods: {
     localizedDate(date) {
       return new Intl
-        .DateTimeFormat('de-DE', { year: 'numeric', month: 'long', day: '2-digit' })
+        .DateTimeFormat(window.navigator.language, {
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit',
+        })
         .format(date);
     },
     dateToWeekDay(date) {
