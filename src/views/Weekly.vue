@@ -94,7 +94,7 @@ export default {
           month: 'long',
           day: '2-digit',
         })
-        .format(date);
+        .format(date instanceof Date ? date : parseISO(date));
     },
     dateToWeekDay(date) {
       return new Intl
