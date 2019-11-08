@@ -34,12 +34,16 @@
     </div>
     <br>
     <div class="is-flex is-wrapping has-gap-20px">
-      <div class="card has-border-radius-6px" v-for="day in days" :key="days.indexOf(day)">
+      <div
+        class="card has-border-radius-6px is-flex is-column"
+        v-for="day in days"
+        :key="days.indexOf(day)"
+      >
         <header class="card-header">
           <p class="card-header-title">{{ dateToWeekDay(day.date) }}</p>
           <p class="card-header-title has-text-grey-light">{{ localizedDate(day.date) }}</p>
         </header>
-        <div class="card-content">
+        <div class="card-content is-grow-1">
           <div class="menu">
             <p class="menu-label">{{ $t('breakfast') }}</p>
             <ul class="menu-list">
@@ -123,6 +127,14 @@ export default {
 </script>
 
 <style scoped>
+.is-column {
+  flex-flow: column;
+}
+
+.is-grow-1 {
+  flex-grow: 1;
+}
+
 .is-wrapping {
   flex-flow: wrap;
 }
