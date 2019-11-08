@@ -50,7 +50,12 @@ npm run lint
 npm run test:unit
 ```
 
-### Run your end-to-end tests
+### Create i18n report
 ```
-npm run test:e2e
+npm run i18n:report
+```
+
+### Deploy to gh-pages
+```
+npm run deploy
 ```
