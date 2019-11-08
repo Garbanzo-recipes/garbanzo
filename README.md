@@ -23,7 +23,7 @@ There are many recipe apps out there. But they do all have their drawbacks - som
 
 ## Features
 
-For the feature list, please have a look at [FEATURES.md](FEATURES.md) in this repo.
+For the feature list, please have a look at [issues](https://github.com/Garbanzo-recipes/garbanzo/issues) in this repo.
 
 ## Project setup
 ```
