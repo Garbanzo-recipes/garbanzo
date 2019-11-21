@@ -20,7 +20,9 @@
 <template>
   <nav class="navbar is-fixed-top">
     <div class="navbar-brand">
-      <div class="navbar-item">Garbanzo</div>
+      <div class="navbar-item">
+        <img src="/img/icon.svg" width="28" height="28">
+      </div>
       <a
         role="button"
         class="navbar-burger burger"
