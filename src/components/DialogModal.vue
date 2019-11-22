@@ -6,11 +6,15 @@
         <p class="modal-card-title">{{ title }}</p>
       </header>
       <section class="modal-card-body">
-        {{ message }}
+        <slot name="content">
+          {{ message }}
+        </slot>
       </section>
       <footer class="modal-card-foot is-vertical-right">
-        <button class="button" @click="$emit('cancelled')">{{ cancel }}</button>
-        <button class="button is-success" @click="$emit('ok')">{{ ok }}</button>
+        <slot name="footer">
+          <button class="button" @click="$emit('cancelled')">{{ cancel }}</button>
+          <button class="button is-success" @click="$emit('ok')">{{ ok }}</button>
+        </slot>
       </footer>
     </div>
   </div>
