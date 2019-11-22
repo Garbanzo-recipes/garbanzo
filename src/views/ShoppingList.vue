@@ -149,7 +149,7 @@ export default {
       showAddItemDialog: false,
       items: [],
       newItem: {
-        quantity: 0,
+        quantity: 1,
         unit: '',
         name: '',
       },
@@ -161,9 +161,18 @@ export default {
       this.$forceUpdate();
     },
     addItem() {
-      this.$store.commit('shoppingList/addItem', this.newItem);
-      this.items = this.$store.getters['shoppingList/entries'];
+      if (this.newItem.quantity !== 0 && this.newItem.name.length > 0) {
+        this.$store.commit('shoppingList/addItem', this.newItem);
+        this.items = this.$store.getters['shoppingList/entries'];
+      }
+
       this.toggleAddItemDialog();
+
+      this.newItem = {
+        quantity: 1,
+        unit: '',
+        name: '',
+      };
     },
     toggleClearAllDialog() {
       this.showClearAllDialog = !this.showClearAllDialog;
