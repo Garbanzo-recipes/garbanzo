@@ -98,7 +98,7 @@
       cancel="Cancel"
       :show="showAddItemDialog"
       @ok="addItem()"
-      @cancel="toggleAddItemDialog()"
+      @cancelled="toggleAddItemDialog()"
     >
       <div slot="content">
         <div class="field has-addons">
