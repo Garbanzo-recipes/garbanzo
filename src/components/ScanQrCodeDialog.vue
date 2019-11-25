@@ -68,16 +68,22 @@ export default {
         await promise;
       } catch (error) {
         if (error.name === 'NotAllowedError') {
+          // eslint-disable-next-line no-console
           console.error('ERROR: you need to grant camera access permisson');
         } else if (error.name === 'NotFoundError') {
+          // eslint-disable-next-line no-console
           console.error('ERROR: no camera on this device');
         } else if (error.name === 'NotSupportedError') {
+          // eslint-disable-next-line no-console
           console.error('ERROR: secure context required (HTTPS, localhost)');
         } else if (error.name === 'NotReadableError') {
+          // eslint-disable-next-line no-console
           console.error('ERROR: is the camera already in use?');
         } else if (error.name === 'OverconstrainedError') {
+          // eslint-disable-next-line no-console
           console.error('ERROR: installed cameras are not suitable');
         } else if (error.name === 'StreamApiNotSupportedError') {
+          // eslint-disable-next-line no-console
           console.error('ERROR: Stream API is not supported in this browser');
         }
       }
