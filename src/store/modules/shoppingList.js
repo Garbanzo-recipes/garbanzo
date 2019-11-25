@@ -1,4 +1,4 @@
-const deepCopy = obj => JSON.parse(JSON.stringify(obj));
+const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
 
 export default {
   namespaced: true,
@@ -6,7 +6,7 @@ export default {
     entries: [],
   },
   getters: {
-    entries: state => deepCopy(state.entries),
+    entries: (state) => deepCopy(state.entries),
   },
   mutations: {
     addItems(state, payload) {

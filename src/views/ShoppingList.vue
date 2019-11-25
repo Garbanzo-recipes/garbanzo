@@ -191,7 +191,7 @@ export default {
       this.toggleClearSelectedDialog();
 
       const updatedList = this.items
-        .filter(item => !item.checked)
+        .filter((item) => !item.checked)
         .map((item) => {
           const newItem = item;
           delete newItem.checked;

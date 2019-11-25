@@ -104,7 +104,7 @@ export default {
       return new Intl
         .DateTimeFormat(window.navigator.language, { weekday: 'long' })
         .formatToParts(new Date(date))
-        .find(item => item.type.toLowerCase() === 'weekday').value || date.toString();
+        .find((item) => item.type.toLowerCase() === 'weekday').value || date.toString();
     },
     dateToIsoDate(date) {
       return format(date instanceof Date ? date : parseISO(date), 'yyyy-MM-dd');

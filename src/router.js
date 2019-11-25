@@ -36,7 +36,7 @@ export default new Router({
     },
     {
       path: '/recipe',
-      component: Vue.component('recipe-view', { render: h => h('router-view') }),
+      component: Vue.component('recipe-view', { render: (h) => h('router-view') }),
       children: [
         {
           path: '',

@@ -43,7 +43,7 @@ import i18n from './i18n';
   faQrcode,
   faAngleDown,
   faGithub,
-].forEach(item => library.add(item));
+].forEach((item) => library.add(item));
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VueQriously);
@@ -54,5 +54,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app');

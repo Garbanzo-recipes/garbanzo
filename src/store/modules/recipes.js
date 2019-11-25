@@ -1,4 +1,4 @@
-const deepCopy = obj => JSON.parse(JSON.stringify(obj));
+const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
 
 export default {
   namespaced: true,
@@ -36,23 +36,24 @@ export default {
     ],
   },
   getters: {
-    list: state => () => state.recipes.map(recipe => ({
+    list: (state) => () => state.recipes.map((recipe) => ({
       title: recipe.title,
       cookTimeInMinutes: recipe.cookTimeInMinutes,
       ingredientsCount: recipe.ingredients.length,
     })),
-    recipeByTitle: state => title => deepCopy(state.recipes.find(recipe => recipe.title === title)),
+    recipeByTitle: (state) => (title) => deepCopy(state.recipes
+      .find((recipe) => recipe.title === title)),
   },
   mutations: {
     addRecipe(state, payload) {
       state.recipes.push(payload);
     },
     updateRecipe(state, payload) {
-      const index = state.recipes.findIndex(recipe => recipe.title === payload.originalTitle);
+      const index = state.recipes.findIndex((recipe) => recipe.title === payload.originalTitle);
       state.recipes[index] = deepCopy(payload.recipe);
     },
   },
   removeRecipe(state, payload) {
-    state.recipes = state.recipes.filter(recipe => recipe.title !== payload.title);
+    state.recipes = state.recipes.filter((recipe) => recipe.title !== payload.title);
   },
 };

@@ -56,7 +56,7 @@
 <script>
 import { getISOWeeksInYear, getISOWeek, getYear } from 'date-fns';
 
-const range = (from, to) => [...Array(to - from + 1).keys()].map(n => n + from);
+const range = (from, to) => [...Array(to - from + 1).keys()].map((n) => n + from);
 
 export default {
   name: 'week-input',

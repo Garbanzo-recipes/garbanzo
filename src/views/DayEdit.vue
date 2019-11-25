@@ -112,7 +112,7 @@ export default {
       }).format(new Date(date));
     },
     removeItem(list, item) {
-      this.day[list] = this.day[list].filter(n => n !== item);
+      this.day[list] = this.day[list].filter((n) => n !== item);
     },
     save() {
       this.$store.commit('weekly/updateDay', {
@@ -134,7 +134,7 @@ export default {
     meals() {
       if (this.day[this.selectedTimeSlot]) {
         return this.$store.getters['recipes/list']()
-          .filter(meal => !this.day[this.selectedTimeSlot].includes(meal));
+          .filter((meal) => !this.day[this.selectedTimeSlot].includes(meal));
       }
 
       return this.$store.getters['recipes/list']();

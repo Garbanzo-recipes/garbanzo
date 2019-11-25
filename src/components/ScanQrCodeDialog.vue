@@ -55,7 +55,8 @@ export default {
         const chunkIndex = parseInt(matches[1], 10) - 1;
         this.chunks[chunkIndex] = data.slice(matches[0].length);
 
-        if (this.chunks.length === chunksCount && this.chunks.every(chunk => chunk !== undefined)) {
+        if (this.chunks.length === chunksCount
+            && this.chunks.every((chunk) => chunk !== undefined)) {
           this.$emit('scanResult', this.chunks.join('').trim());
         }
       } else {

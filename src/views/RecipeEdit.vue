@@ -122,7 +122,7 @@ export default {
       });
     },
     removeIngridient(ingredient) {
-      this.recipe.ingredients = this.recipe.ingredients.filter(n => n !== ingredient);
+      this.recipe.ingredients = this.recipe.ingredients.filter((n) => n !== ingredient);
     },
     save() {
       if (this.$route.path !== '/recipe/new') {

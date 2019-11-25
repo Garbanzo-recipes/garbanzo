@@ -18,8 +18,8 @@ export default {
   data() {
     return {
       navItems: this.$router.options.routes
-        .filter(route => !!route.meta)
-        .map(route => Object.assign({
+        .filter((route) => !!route.meta)
+        .map((route) => ({
           title: route.meta.title,
           path: route.path.replace(/:.*/, ''),
         })),
