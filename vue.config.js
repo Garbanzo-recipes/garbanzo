@@ -10,6 +10,9 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true,
     },
+    webpackBundleAnalyzer: {
+      openAnalyzer: false,
+    },
   },
   publicPath: process.env.NODE_ENV === 'production' ? '/garbanzo/' : '/',
   pwa: {
