@@ -1,11 +1,16 @@
 import {
-  parse,
+  addWeeks,
   lastDayOfWeek,
   eachDayOfInterval,
   format,
 } from 'date-fns';
 
 const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
+
+const weekYearToDate = (date) => {
+  const [, year, week] = date.match(/([0-9]{4})-W([0-9]{2})/);
+  return addWeeks(new Date(parseInt(year, 10), 0), parseInt(week, 10) - 1);
+};
 
 export default {
   namespaced: true,
@@ -68,7 +73,7 @@ export default {
   },
   getters: {
     weekData: (state) => (weekYear) => {
-      const firstDayOfTheWeek = parse(weekYear, "R'-W'I", new Date());
+      const firstDayOfTheWeek = weekYearToDate(weekYear);
 
       return eachDayOfInterval({
         start: firstDayOfTheWeek,
