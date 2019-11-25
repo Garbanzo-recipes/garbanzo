@@ -7,7 +7,7 @@
         <button class="delete" aria-label="close" @click="$emit('close')"></button>
       </header>
       <section class="modal-card-body is-flex is-justified-center">
-        <qriously :value="qrContent" :size="270" level="M" />
+        <v-qriously :value="qrContent" :size="270" level="M" />
       </section>
       <!--<footer class="modal-card-foot">
         <button class="button">Close</button>
@@ -29,6 +29,9 @@ const splitIntoChunks = (str, chunkLength = 100, rightPad = ' ') => {
 
 export default {
   name: 'qr-code-dialog',
+  components: {
+    VQriously: () => import(/* webpackChunkName: "v-qriously" */ '@/components/v-qriously.vue'),
+  },
   props: {
     title: String,
     value: Object,

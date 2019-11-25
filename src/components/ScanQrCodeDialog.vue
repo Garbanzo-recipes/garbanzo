@@ -30,12 +30,11 @@
 </template>
 
 <script>
-import { QrcodeStream } from 'vue-qrcode-reader';
-
 export default {
   name: 'scan-qr-code-dialog',
   components: {
-    QrcodeStream,
+    QrcodeStream: () => import(/* webpackChunkName: "vue-qrcode-reader" */ 'vue-qrcode-reader')
+      .then((o) => o.QrcodeStream),
   },
   props: {
     // title: String,

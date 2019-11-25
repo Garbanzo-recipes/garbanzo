@@ -20,7 +20,6 @@ import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import VueQriously from 'vue-qriously';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -46,7 +45,6 @@ import i18n from './i18n';
 ].forEach((item) => library.add(item));
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.use(VueQriously);
 
 Vue.config.productionTip = false;
 
