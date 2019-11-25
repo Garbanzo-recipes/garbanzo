@@ -1,6 +1,6 @@
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob-all');
-const path = require('path');
+const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   pluginOptions: {
@@ -22,10 +22,10 @@ module.exports = {
         paths: glob.sync([
           path.join(__dirname, './src/index.html'),
           path.join(__dirname, './**/*.vue'),
-          path.join(__dirname, './src/**/*.js')
+          path.join(__dirname, './src/**/*.js'),
         ]),
-        whitelist: ['has-navbar-fixed-top']
-      })
-    ]
-  }
+        whitelist: ['has-navbar-fixed-top'],
+      }),
+    ],
+  },
 };

@@ -1,25 +1,29 @@
 import 'whatwg-fetch';
 import 'abortcontroller-polyfill/dist/polyfill-patch-fetch';
 
-const isPlainObject = (o) => {
-  const isObject = o => val != null
+const isPlainObject = (obj) => {
+  const isObject = val => val != null
       && typeof val === 'object'
       && Array.isArray(val) === false
-      && Object.prototype.toString.call(o) === '[object Object]';
+      && Object.prototype.toString.call(val) === '[object Object]';
 
   const hasModifiedConstructor = o => typeof o.constructor !== 'function';
   const hasModifiedPrototype = o => isObject(o.constructor.prototype) === false;
-  const hasSpecificMethod = o => o.constructor.prototype.hasOwnProperty('isPrototypeOf');
+  const hasSpecificMethod = o => Object.prototype.hasOwnProperty.call(o, 'isPrototypeOf');
 
-  return isObject(o) && !hasModifiedConstructor(o) && !hasModifiedPrototype(o) && hasSpecificMethod(o);
-}
+  return isObject(obj)
+    && !hasModifiedConstructor(obj)
+    && !hasModifiedPrototype(obj)
+    && hasSpecificMethod(obj);
+};
 
 const sequentialPromises = funcs => funcs.reduce((promise, func) => promise
-  .then(result => func().then(Array.prototype.concat.bind(result)))
-, Promise.resolve([]));
+  .then(result => func().then(Array.prototype.concat.bind(result))),
+Promise.resolve([]));
 
 class Http {
   defaults = {};
+
   interceptors = {
     request: [],
     response: [],
@@ -34,33 +38,38 @@ class Http {
   }
 
   static install(Vue, options) {
-    Vue.prototype.$http = this;
+    this.defaults = options;
+    Vue.prototype.$http = this; // eslint-disable-line no-param-reassign
   }
 
   async request(options) {
     // baseUrl if set
+    if (this.defaults.baseUrl) {
+      options.baseUrl = this.defaults.baseUrl; // eslint-disable-line no-param-reassign
+    }
 
     return sequentialPromises([
-      ...interceptors.request,
+      ...this.interceptors.request,
       () => Http.request(options),
-      ...interceptors.response,
+      ...this.interceptors.response,
     ]);
   }
 
   static async request(options) {
+    // TODO: deep copy options into opts?
     // handle http errors if wanted
     // "signal" for cancellation
 
-    let headers = options.headers || {};
+    const headers = options.headers || {};
 
     let body = options.data;
-    if (isPlainObject(data) || Array.isArray(data)) {
-      body = JSON.stringify(data);
+    if (isPlainObject(body) || Array.isArray(body)) {
+      body = JSON.stringify(body);
 
       if (!headers.keys().includes('Content-Type')) {
         headers['Content-Type'] = 'application/json';
       }
-    } else if (!body instanceof Blob) {
+    } else if (!(body instanceof Blob)) {
       body = options.data.toString();
     }
 
@@ -74,12 +83,12 @@ class Http {
     }
 
     if (options.withCredentials) {
-      options.credentials = 'include';
+      options.credentials = 'include'; // eslint-disable-line no-param-reassign
     }
 
     return Promise.race([
       fetch(options.url, Object.assign(options, {
-        method: options.method ? options.method.toUpperCase() : 'GET', 
+        method: options.method ? options.method.toUpperCase() : 'GET',
         body,
         headers,
       })),
@@ -90,9 +99,10 @@ class Http {
       }),
     ]);
   }
-};
+}
 
 ['get', 'delete', 'head', 'options'].forEach((method) => {
+  // eslint-disable-next-line func-names
   Http[method] = function (url, options = null) {
     return Http.request(Object.assign({
       method,
@@ -100,7 +110,8 @@ class Http {
     }, options));
   };
 
-  Http.prototype[method] = function(url, options = null) {
+  // eslint-disable-next-line func-names
+  Http.prototype[method] = function (url, options = null) {
     return this.request(Object.assign({
       method,
       url,
@@ -109,15 +120,17 @@ class Http {
 });
 
 ['post', 'put', 'patch'].forEach((method) => {
+  // eslint-disable-next-line func-names
   Http[method] = function (url, data = null, options = null) {
-    return request(Object.assign({
+    return Http.request(Object.assign({
       method,
       url,
       data,
     }, options));
   };
 
-  Http.prototype[method] = function(url, data = null, options = null) {
+  // eslint-disable-next-line func-names
+  Http.prototype[method] = function (url, data = null, options = null) {
     return this.request(Object.assign({
       method,
       url,
