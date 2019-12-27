@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import Qrious from 'qrious';
-
 export default {
   data() {
     return { qrious: null };
@@ -53,57 +51,81 @@ export default {
   },
   watch: {
     background() {
-      this.qrious.background = this.background;
+      if (this.qrious) {
+        this.qrious.background = this.background;
+      }
     },
     backgroundAlpha() {
-      this.qrious.backgroundAlpha = this.backgroundAlpha;
+      if (this.qrious) {
+        this.qrious.backgroundAlpha = this.backgroundAlpha;
+      }
     },
     foreground() {
-      this.qrious.foreground = this.foreground;
+      if (this.qrious) {
+        this.qrious.foreground = this.foreground;
+      }
     },
     foregroundAlpha() {
-      this.qrious.foregroundAlpha = this.foregroundAlpha;
+      if (this.qrious) {
+        this.qrious.foregroundAlpha = this.foregroundAlpha;
+      }
     },
     level() {
-      this.qrious.level = this.level;
+      if (this.qrious) {
+        this.qrious.level = this.level;
+      }
     },
     mime() {
-      this.qrious.mime = this.mime;
+      if (this.qrious) {
+        this.qrious.mime = this.mime;
+      }
     },
     padding() {
-      this.qrious.padding = this.padding;
+      if (this.qrious) {
+        this.qrious.padding = this.padding;
+      }
     },
     size() {
-      this.qrious.size = this.size;
+      if (this.qrious) {
+        this.qrious.size = this.size;
+      }
     },
     value() {
-      this.qrious.value = this.value;
+      if (this.qrious) {
+        this.qrious.value = this.value;
+      }
     },
   },
-  mounted() {
-    const element = this.$refs.qrcode;
-    const { background } = this;
-    const { backgroundAlpha } = this;
-    const { foreground } = this;
-    const { foregroundAlpha } = this;
-    const { level } = this;
-    const { mime } = this;
-    const { padding } = this;
-    const { size } = this;
-    const { value } = this;
+  async mounted() {
+    try {
+      const Qrious = () => import(/* webpackChunkName: "qrious" */ 'qrious');
 
-    this.qrious = new Qrious({
-      element,
-      background,
-      backgroundAlpha,
-      foreground,
-      foregroundAlpha,
-      level,
-      mime,
-      padding,
-      size,
-      value,
-    });
+      const element = this.$refs.qrcode;
+      const { background } = this;
+      const { backgroundAlpha } = this;
+      const { foreground } = this;
+      const { foregroundAlpha } = this;
+      const { level } = this;
+      const { mime } = this;
+      const { padding } = this;
+      const { size } = this;
+      const { value } = this;
+
+      this.qrious = new Qrious({
+        element,
+        background,
+        backgroundAlpha,
+        foreground,
+        foregroundAlpha,
+        level,
+        mime,
+        padding,
+        size,
+        value,
+      });
+    } catch (e) {
+      console.error(e); // eslint-disable-line no-console
+    }
   },
 };
 </script>
