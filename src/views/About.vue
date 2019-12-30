@@ -8,13 +8,16 @@
         Garbanzo-recipes/garbanzo
       </a>
     </p>
-    <p><qriously :value="url" :size="270" level="M" /></p>
+    <p><v-qriously :value="url" :size="270" level="M" /></p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'about',
+  components: {
+    VQriously: () => import(/* webpackChunkName: "v-qriously" */ '@/components/v-qriously.vue'),
+  },
   data() {
     return {
       url: window.location.origin + window.location.pathname,
