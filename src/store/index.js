@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import createGithubStoragePlugin from './plugins/githubStorage';
+// import createGithubStoragePlugin from './plugins/githubStorage';
 import recipes from './modules/recipes';
 import shoppingList from './modules/shoppingList';
 import weekly from './modules/weekly';
@@ -16,6 +16,6 @@ export default new Vuex.Store({
   },
   plugins: [
     createPersistedState(),
-    createGithubStoragePlugin(),
+    // createGithubStoragePlugin(),
   ],
 });
