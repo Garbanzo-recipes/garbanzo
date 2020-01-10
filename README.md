@@ -4,7 +4,7 @@
 
 This PWA is deployed as Github pages at:
 
-https://garbanzo-recipes.github.io/garbanzo/
+https://garbanzo.now.sh/
 
 ## Project vision
 Garbanzo aims to be a personal cookbook app that makes it easy to follow recipes, to adopt them, to store them for later use and to share them privately with others.
