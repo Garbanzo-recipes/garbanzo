@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     save() {
-      console.log('saving github creds and repo');
+      console.log('saving github creds and repo'); // eslint-disable-line no-console
     },
   },
 };
