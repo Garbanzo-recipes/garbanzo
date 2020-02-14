@@ -30,7 +30,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@kazupon/vue-i18n-loader": "^0.4.1",
+    "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.2.2",
     "@vue/cli-plugin-eslint": "^4.2.2",
     "@vue/cli-plugin-pwa": "^4.2.2",
@@ -40,7 +40,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.0-beta.31",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^25.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.1.2",
@@ -48,7 +48,7 @@
     "glob-all": "^3.1.0",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
-    "purgecss-webpack-plugin": "^1.6.0",
+    "purgecss-webpack-plugin": "^2.0.6",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-i18n": "^0.6.1",
     "vue-cli-plugin-webpack-bundle-analyzer": "^2.0.0",
