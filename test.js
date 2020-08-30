@@ -4,16 +4,16 @@ const xmlParser = require('fast-xml-parser');
 const request = async (method, path, username, password) => {
   const res = await fetch(path, {
     headers: {
-      authorization: "Basic " + Buffer.from(username + ':' + password).toString('base64')
+      authorization: `Basic ${ Buffer.from(`${username }:${ password}`).toString('base64')}`,
     },
-    method
+    method,
   });
-  
+
   const xml = await res.text();
 
   const json = xmlParser.parse(xml, {
     arrayMode: false,
-    ignoreNameSpace: true
+    ignoreNameSpace: true,
   });
 
   return json.multistatus.response;
@@ -89,7 +89,6 @@ request('PROPFIND', 'https://cloud.dlemper.de/public.php/webdav/', '3aTPwXXGfAqM
   }
 }
 */
-
 
 /*
 {

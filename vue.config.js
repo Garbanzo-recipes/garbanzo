@@ -1,6 +1,6 @@
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const glob = require('glob-all');
-const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
+// const PurgecssPlugin = require('purgecss-webpack-plugin');
+// const glob = require('glob-all');
+// const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
   pluginOptions: {
@@ -20,7 +20,7 @@ module.exports = {
   },
   configureWebpack: {
     // Merged into the final Webpack config
-    //plugins: [
+    // plugins: [
     //  new PurgecssPlugin({
     //    paths: glob.sync([
     //      path.join(__dirname, './src/index.html'),
@@ -29,6 +29,6 @@ module.exports = {
     //    ]),
     //    whitelist: ['has-navbar-fixed-top'],
     //  }),
-    //],
+    // ],
   },
 };
