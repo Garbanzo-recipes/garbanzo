@@ -28,9 +28,6 @@
         <button class="button" @click="$router.push(`/recipe/${recipe.title}/edit`)">
           <font-awesome-icon icon="pen" />
         </button>
-        <button class="button" @click="toggleQRCodeDialog()">
-          <font-awesome-icon icon="share" />
-        </button>
       </div>
     </h1>
     <h2 class="subtitle is-4">{{ $t('ingredients') }}</h2>
@@ -56,28 +53,16 @@
     <p>{{ $t('preparationTime') }}: {{ recipe.cookTimeInMinutes }}m</p>
     <p>{{ recipe.preparation }}</p>
     <button class="button is-primary">{{ $t('cookNow') }}</button>
-    <qr-code-dialog
-      :title="recipe.title"
-      v-model="recipe"
-      :show="showQrCode"
-      @close="toggleQRCodeDialog"
-    />
   </div>
 </template>
 
 <script>
-import QrCodeDialog from '@/components/QrCodeDialog.vue';
-
 export default {
   name: 'recipe',
-  components: {
-    QrCodeDialog,
-  },
   data() {
     return {
       recipe: {},
       didPutOnList: false,
-      showQrCode: false,
     };
   },
   methods: {
@@ -88,9 +73,6 @@ export default {
         from: this.recipe.title,
       })));
       this.didPutOnList = true;
-    },
-    toggleQRCodeDialog() {
-      this.showQrCode = !this.showQrCode;
     },
   },
   mounted() {

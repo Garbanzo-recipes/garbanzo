@@ -2,7 +2,6 @@
   <div class="about">
     <h1 class="title">Settings</h1>
     <h2 class="title is-4">Server connection</h2>
-    <GithubSettings />
     <h2 class="title is-4">People in household</h2>
     <div class="field has-addons">
       <p class="control has-icons-left">
@@ -16,13 +15,8 @@
 </template>
 
 <script>
-import GithubSettings from '../components/GithubSettings.vue';
-
 export default {
   name: 'settings',
-  components: {
-    GithubSettings,
-  },
   data() {
     return {
       peopleCount: 1,

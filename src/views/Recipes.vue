@@ -2,7 +2,6 @@
 {
   "en": {
     "title": "Recipes",
-    "scan": "Scan QR Code",
     "download": "Download",
     "upload": "Upload",
     "deleteDialog": {
@@ -14,7 +13,6 @@
   },
   "de": {
     "title": "Rezepte",
-    "scan": "QR Code scannen",
     "download": "Herunterladen",
     "upload": "Hochladen",
     "deleteDialog": {
@@ -44,10 +42,6 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-                <a @click="toggleQrCodeScannerDialog()" class="dropdown-item">
-                  <font-awesome-icon icon="qrcode" /> {{ $t('scan') }}
-                </a>
-                <hr class="dropdown-divider">
                 <a @click="downloadRecipes()" class="dropdown-item">
                   <font-awesome-icon icon="download" /> {{ $t('download') }}
                 </a>
@@ -93,24 +87,16 @@
       @cancelled="toggleRemoveRecipeDialog()"
       :show="showRemoveRecipeDialog"
     />
-
-    <scan-qr-code-dialog
-      :show="showQrCodeScannerDialog"
-      @scanResult="importRecipeFromQrCode"
-      @close="toggleQrCodeScannerDialog"
-    />
   </div>
 </template>
 
 <script>
 import DialogModal from '@/components/DialogModal.vue';
-import ScanQrCodeDialog from '@/components/ScanQrCodeDialog.vue';
 
 export default {
   name: 'recipes',
   components: {
     DialogModal,
-    ScanQrCodeDialog,
   },
   data() {
     return {
@@ -118,7 +104,6 @@ export default {
       recipeToDelete: {},
       showRemoveRecipeDialog: false,
       showShareMenu: false,
-      showQrCodeScannerDialog: false,
     };
   },
   methods: {
@@ -148,14 +133,6 @@ export default {
     },
     uploadRecipes() {
 
-    },
-    toggleQrCodeScannerDialog() {
-      this.showQrCodeScannerDialog = !this.showQrCodeScannerDialog;
-    },
-    importRecipeFromQrCode(content) {
-      this.toggleQrCodeScannerDialog();
-      this.$store.commit('recipes/addRecipe', JSON.parse(content));
-      this.recipes = this.$store.getters['recipes/list']();
     },
   },
   mounted() {
