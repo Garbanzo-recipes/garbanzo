@@ -47,17 +47,22 @@
         </span>
       </p>
     </div>
-    <ul class="list-disc ml-8 my-4">
+    <ul class="ml-8 my-4">
       <li
         v-for="ingredient in recipe.ingredients"
         :key="recipe.ingredients.indexOf(ingredient)"
-        class="flex flex-wrap"
+        class="flex flex-wrap my-1"
       >
         <g-number-input
           v-model="ingredient.quantity"
           :placeholder="$t('quantity')"
+          class="w-32"
         />
-        <g-text-input v-model="ingredient.unit" :placeholder="$t('unit')" />
+        <g-text-input
+          v-model="ingredient.unit"
+          :placeholder="$t('unit')"
+          class="w-32"
+        />
         <g-text-input
           v-model="ingredient.name"
           :placeholder="$t('ingridient')"
