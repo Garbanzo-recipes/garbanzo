@@ -50,14 +50,14 @@
           >
             No items added
           </div>
-          <ul>
+          <ul class="px-2">
             <li
               v-for="(item, index) in day[list]"
               :key="index"
               class="flex justify-between"
             >
               {{ item }}
-              <a class="delete" @click="removeItem(list, item)">
+              <a class="cursor-pointer" @click="removeItem(list, item)">
                 <font-awesome-icon icon="minus" />
               </a>
             </li>
@@ -104,7 +104,7 @@
         </div>
       </div>
       <template v-slot:footer>
-        <g-button variant="success" @click="addMeal()">
+        <g-button variant="success" class="ml-2" @click="addMeal()">
           {{ $t('save') }}
         </g-button>
         <g-button outline @click="toggleAddModal()">
@@ -168,6 +168,7 @@ export default {
         date: this.$route.params.date,
         data: this.day, // TODO: rename attribute!
       })
+
       this.$router.push(
         `/weekly/${format(new Date(this.day.date), "yyyy-'W'II")}`
       )

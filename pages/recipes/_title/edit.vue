@@ -89,7 +89,9 @@
     />
     <br />
     <div class="flex flex-row flex-wrap mt-4">
-      <g-button outline @click="$router.back()">{{ $t('cancel') }}</g-button>
+      <g-button outline class="mr-2" @click="$router.back()">
+        {{ $t('cancel') }}
+      </g-button>
       <g-button variant="primary" @click="save()">
         {{ $t('save') }}
       </g-button>
