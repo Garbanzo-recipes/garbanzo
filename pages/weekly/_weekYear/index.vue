@@ -30,8 +30,8 @@
     </div>
     <div class="flex flex-wrap has-gap-20px">
       <div
-        v-for="day in days"
-        :key="days.indexOf(day)"
+        v-for="(day, dayIndex) in days"
+        :key="dayIndex"
         class="border rounded-lg shadow-md border-gray-200 w-64 flex flex-col"
       >
         <header class="flex flex-wrap justify-between p-2">
@@ -52,10 +52,7 @@
               >
                 No items added
               </li>
-              <li
-                v-for="item in day.breakfast"
-                :key="day.breakfast.indexOf(item)"
-              >
+              <li v-for="(item, index) in day.breakfast" :key="index">
                 <nuxt-link :to="`/recipes/${item}`">{{ item }}</nuxt-link>
               </li>
             </ul>
@@ -67,7 +64,7 @@
               >
                 No items added
               </li>
-              <li v-for="item in day.lunch" :key="day.lunch.indexOf(item)">
+              <li v-for="(item, index) in day.lunch" :key="index">
                 <nuxt-link :to="`/recipes/${item}`">{{ item }}</nuxt-link>
               </li>
             </ul>
@@ -79,10 +76,7 @@
               >
                 No items added
               </li>
-              <li
-                v-for="item in day.afternoon"
-                :key="day.afternoon.indexOf(item)"
-              >
+              <li v-for="(item, index) in day.afternoon" :key="index">
                 <nuxt-link :to="`/recipes/${item}`">{{ item }}</nuxt-link>
               </li>
             </ul>
@@ -94,7 +88,7 @@
               >
                 No items added
               </li>
-              <li v-for="item in day.dinner" :key="day.dinner.indexOf(item)">
+              <li v-for="(item, index) in day.dinner" :key="index">
                 <nuxt-link :to="`/recipes/${item}`">{{ item }}</nuxt-link>
               </li>
             </ul>
@@ -154,6 +148,24 @@ export default {
     },
     dateToIsoDate(date) {
       return format(date instanceof Date ? date : parseISO(date), 'yyyy-MM-dd')
+    },
+    addToShoppingList() {
+      const ingredients = this.days
+        .map((day) => Object.values(day).filter((item) => Array.isArray(item)))
+        .flat(2)
+        .map((recipe) => this.$store.getters['recipes/recipeByTitle'](recipe))
+        .map((recipe) =>
+          recipe.ingredients.map((ingredient) =>
+            Object.assign({}, ingredient, {
+              quantity:
+                (ingredient.quantity / recipe.peopleCount) * recipe.peopleCount,
+              from: recipe,
+            })
+          )
+        )
+        .flat()
+      console.log(ingredients)
+      this.$store.commit('shoppingList/addItems', ingredients)
     },
   },
 }
