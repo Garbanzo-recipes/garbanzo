@@ -25,6 +25,7 @@
     "@juggle/resize-observer": "^3.2.0",
     "@nuxtjs/pwa": "^3.2.2",
     "date-fns": "^2.16.1",
+    "gotrue-js": "^0.9.27",
     "nuxt": "^2.14.7",
     "nuxt-i18n": "^6.15.4",
     "nuxt-polyfill": "^1.0.3",

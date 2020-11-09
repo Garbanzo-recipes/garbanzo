@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate'
 import recipes from './recipes'
 import shoppingList from './shoppingList'
 import weekly from './weekly'
+import auth from './auth'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export default () =>
       recipes,
       shoppingList,
       weekly,
+      auth,
     },
 
     plugins: [
