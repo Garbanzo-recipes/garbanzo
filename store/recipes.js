@@ -2,6 +2,7 @@ const deepCopy = (obj) => JSON.parse(JSON.stringify(obj))
 
 export default {
   namespaced: true,
+
   state: {
     recipes: [
       {
@@ -36,6 +37,7 @@ export default {
       },
     ],
   },
+
   getters: {
     list: (state) => () =>
       state.recipes.map((recipe) => ({
@@ -43,23 +45,27 @@ export default {
         cookTimeInMinutes: recipe.cookTimeInMinutes,
         ingredientsCount: recipe.ingredients.length,
       })),
+
     recipeByTitle: (state) => (title) =>
       deepCopy(state.recipes.find((recipe) => recipe.title === title)),
   },
+
   mutations: {
     addRecipe(state, payload) {
       state.recipes.push(payload)
     },
+
     updateRecipe(state, payload) {
       const index = state.recipes.findIndex(
         (recipe) => recipe.title === payload.originalTitle
       )
       state.recipes[index] = deepCopy(payload.recipe)
     },
-  },
-  removeRecipe(state, payload) {
-    state.recipes = state.recipes.filter(
-      (recipe) => recipe.title !== payload.title
-    )
+
+    removeRecipe(state, payload) {
+      state.recipes = state.recipes.filter(
+        (recipe) => recipe.title !== payload.title
+      )
+    },
   },
 }

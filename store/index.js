@@ -14,6 +14,7 @@ export default () =>
       shoppingList,
       weekly,
     },
+
     plugins: [
       createPersistedState(),
       // createGithubStoragePlugin(),

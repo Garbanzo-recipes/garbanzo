@@ -9,6 +9,7 @@ const weekYearToDate = (date) => {
 
 export default {
   namespaced: true,
+
   state: {
     weekly: [
       {
@@ -62,6 +63,7 @@ export default {
       },
     ],
   },
+
   getters: {
     weekData: (state) => (weekYear) => {
       const firstDayOfTheWeek = weekYearToDate(weekYear)
@@ -81,6 +83,7 @@ export default {
           }
       )
     },
+
     dayData: (state) => (day) =>
       deepCopy(
         state.weekly.find((item) => item.date === day) || {
@@ -92,6 +95,7 @@ export default {
         }
       ),
   },
+
   mutations: {
     updateDay(state, payload) {
       const indexOfDay = state.weekly.findIndex(
