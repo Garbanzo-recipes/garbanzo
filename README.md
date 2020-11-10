@@ -4,7 +4,7 @@
 
 This PWA is deployed as Github pages at:
 
-https://garbanzo.now.sh/
+https://garbanzo-recipes.org/
 
 ## Project vision
 
