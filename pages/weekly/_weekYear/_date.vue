@@ -40,7 +40,14 @@
       <div
         v-for="list in lists"
         :key="lists.indexOf(list)"
-        class="flex flex-col rounded-lg shadow-md border border-gray-200 w-64 m-3"
+        class="
+          flex flex-col
+          rounded-lg
+          shadow-md
+          border border-gray-200
+          w-64
+          m-3
+        "
       >
         <div class="list">
           <div class="font-bold p-2">{{ $t(list) }}</div>
@@ -63,7 +70,16 @@
             </li>
           </ul>
           <a
-            class="h-12 w-full text-center align-middle p-3 block hover:bg-gray-300 cursor-pointer"
+            class="
+              h-12
+              w-full
+              text-center
+              align-middle
+              p-3
+              block
+              hover:bg-gray-300
+              cursor-pointer
+            "
             @click="toggleAddModal(list)"
           >
             <font-awesome-icon icon="plus" />
@@ -80,7 +96,19 @@
       <div class="flex flex-wrap">
         <select
           v-model="selectedMeal"
-          class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          class="
+            block
+            appearance-none
+            bg-gray-200
+            border border-gray-200
+            text-gray-700
+            py-3
+            px-4
+            pr-8
+            rounded
+            leading-tight
+            focus:outline-none focus:bg-white focus:border-gray-500
+          "
         >
           <option
             v-for="meal in meals"

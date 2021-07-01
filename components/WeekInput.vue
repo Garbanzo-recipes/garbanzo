@@ -14,7 +14,19 @@
     <div class="relative border-r border-gray-400">
       <select
         v-model="selectedWeek"
-        class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-l leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        class="
+          block
+          appearance-none
+          bg-gray-200
+          border border-gray-200
+          text-gray-700
+          py-3
+          px-4
+          pr-8
+          rounded-l
+          leading-tight
+          focus:outline-none focus:bg-white focus:border-gray-500
+        "
         @change="handleSelectEvent()"
       >
         <option
@@ -27,7 +39,16 @@
         </option>
       </select>
       <div
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+        class="
+          pointer-events-none
+          absolute
+          inset-y-0
+          right-0
+          flex
+          items-center
+          px-2
+          text-gray-700
+        "
       >
         <svg
           class="fill-current h-4 w-4"
@@ -43,7 +64,19 @@
     <div class="relative">
       <select
         v-model="selectedYear"
-        class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-r leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        class="
+          block
+          appearance-none
+          bg-gray-200
+          border border-gray-200
+          text-gray-700
+          py-3
+          px-4
+          pr-8
+          rounded-r
+          leading-tight
+          focus:outline-none focus:bg-white focus:border-gray-500
+        "
         @change="handleSelectEvent()"
       >
         <option
@@ -56,7 +89,16 @@
         </option>
       </select>
       <div
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+        class="
+          pointer-events-none
+          absolute
+          inset-y-0
+          right-0
+          flex
+          items-center
+          px-2
+          text-gray-700
+        "
       >
         <svg
           class="fill-current h-4 w-4"

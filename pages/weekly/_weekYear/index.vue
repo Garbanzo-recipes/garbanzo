@@ -96,7 +96,15 @@
         </div>
         <footer class="mt-2">
           <nuxt-link
-            class="h-12 w-full text-center align-middle p-3 block hover:bg-gray-300"
+            class="
+              h-12
+              w-full
+              text-center
+              align-middle
+              p-3
+              block
+              hover:bg-gray-300
+            "
             :to="`/weekly/${weekYear}/${dateToIsoDate(day.date)}`"
           >
             <font-awesome-icon icon="edit" />

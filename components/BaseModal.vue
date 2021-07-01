@@ -7,7 +7,14 @@ and afterwards slightly modified
   <portal to="modal">
     <transition name="fade">
       <div
-        class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+        class="
+          fixed
+          bottom-0
+          inset-x-0
+          px-4
+          pb-4
+          sm:inset-0 sm:flex sm:items-center sm:justify-center
+        "
       >
         <div class="fixed inset-0 transition-opacity">
           <div
@@ -16,7 +23,16 @@ and afterwards slightly modified
           ></div>
         </div>
         <div
-          class="z-10 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
+          class="
+            z-10
+            bg-white
+            rounded-lg
+            overflow-hidden
+            shadow-xl
+            transform
+            transition-all
+            sm:max-w-lg sm:w-full
+          "
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
