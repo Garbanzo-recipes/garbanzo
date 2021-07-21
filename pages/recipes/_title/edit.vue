@@ -79,7 +79,7 @@
     </ul>
     <g-subtitle>{{ $t('preparation') }}</g-subtitle>
     <div class="flex flex-wrap mb-4">
-      <g-text-input
+      <g-number-input
         v-model="recipe.cookTimeInMinutes"
         :placeholder="$t('minutes')"
       />
@@ -133,6 +133,10 @@ export default {
     return {
       recipe: {
         ingredients: [],
+        title: '',
+        peopleCount: 1,
+        cookTimeInMinutes: 1,
+        preparation: '',
       },
       originalTitle: '',
     }
