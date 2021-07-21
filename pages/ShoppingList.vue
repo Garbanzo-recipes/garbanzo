@@ -81,7 +81,7 @@
 
     <base-modal v-if="showClearAllDialog" :title="$t('clearAllDialog.title')">
       {{ $t('clearAllDialog.message') }}
-      <template v-slot:footer>
+      <template #footer>
         <g-button variant="danger" @click="clearShoppingList()">
           {{ $t('clearAllDialog.yes') }}
         </g-button>
@@ -117,7 +117,7 @@
           :placeholder="$t('ingridient')"
         />
       </div>
-      <template v-slot:footer>
+      <template #footer>
         <g-button variant="danger" @click="addItem()"> OK </g-button>
         <g-button class="mr-1" outline @click="toggleAddItemDialog()">
           Cancel

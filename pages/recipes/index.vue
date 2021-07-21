@@ -72,7 +72,7 @@
       @close="toggleRemoveRecipeDialog()"
     >
       {{ $t('deleteDialog.message', { title: recipeToDelete.title }) }}
-      <template v-slot:footer>
+      <template #footer>
         <g-button variant="danger" @click="removeRecipe(recipeToDelete)">
           {{ $t('deleteDialog.yes') }}
         </g-button>

@@ -131,7 +131,7 @@
           </span>
         </div>
       </div>
-      <template v-slot:footer>
+      <template #footer>
         <g-button variant="success" class="ml-2" @click="addMeal()">
           {{ $t('save') }}
         </g-button>
