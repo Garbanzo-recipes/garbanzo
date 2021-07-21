@@ -12,5 +12,18 @@
       leading-tight
       focus:outline-none focus:bg-white focus:border-purple-500
     "
+    :value="value"
+    @input="$emit('input', parseFloat($event.target.value))"
   />
 </template>
+
+<script>
+export default {
+  props: {
+    value: {
+      type: Number,
+      required: true,
+    },
+  },
+}
+</script>
